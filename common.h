@@ -1,9 +1,18 @@
-//
-//  common.h
-//  Lab3
-//
-//  Created by Bryce Holton.
-//
+/*
+ Team 15: https://github.com/TheLinkers/cse220_lab4
+ Nikolas Conklin:
+ Daniel Martin:
+ Matthew Weser: mweser
+ 
+ 8 Apr 2014
+ CSE 220
+ 10:30am T Th
+ 
+ //  common.h
+ //  Lab4
+ //
+ //  Created by Bryce Holton.
+ */
 
 #ifndef CSE220_project2_common_h
 #define CSE220_project2_common_h
