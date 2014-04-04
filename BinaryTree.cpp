@@ -1,9 +1,13 @@
-//
-//  BinaryTree.cpp
-//  cse220_lab4
-//
-//  Created by Matthew Weser on 4/4/14.
-//  Copyright (c) 2014 mweser. All rights reserved.
-//
+/* Team 15: https://github.com/TheLinkers/cse220_lab4
+ Nikolas Conklin:
+ Daniel Martin:
+ Matthew Weser: mweser
+ 
+ 8 Apr 2014
+ CSE 220
+ 10:30am T Th
+ 
+ BinaryTree.cpp
+ Lab4 */
 
 #include "BinaryTree.h"
