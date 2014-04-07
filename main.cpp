@@ -19,6 +19,8 @@
 #include "Print.h"
 #include "Scanner.h"
 #include "Token.h"
+#include "BinaryTree.h"
+#include "IntegerList.h"
 
 FILE *init_lister(const char *name, char source_file_name[], char dte[]);
 void quit_scanner(FILE *src_file, Token *list);
@@ -37,11 +39,20 @@ int main(int argc, const char * argv[])
     FILE *source_file = init_lister(argv[1], source_name, date);
     Print print(source_name, date);
     Scanner scanner(source_file, source_name, date, print);
+    BinaryTree tree = new BinaryTree();		// not sure how to properly initialize/set the root of the tree
     
     do
     {
         token = scanner.getToken();
         print.printToken(token);
+	
+	// BinaryTree stuff goes here
+	// If token is IDENTIFIER type, sends token pointer to tree to check if it exists
+    if (token->getCode() == IDENTIFIER) {
+	tree.addToken(*token);
+    }
+    
+    
         if (token->getCode() != PERIOD && token->getCode() != END_OF_FILE)
         {
             delete token;
