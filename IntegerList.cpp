@@ -39,7 +39,7 @@ IntegerNode* IntegerList::getTail() {
 
 
 void IntegerList::appendToList(int value) {
-    this->tail = IntegerNode(value, this.tail);
+    this->tail = IntegerNode(value, this->tail);
     if(this.numberOfNodes = null){
 	numberOfNodes = 1;
     }

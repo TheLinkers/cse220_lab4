@@ -28,7 +28,7 @@ private:
     IntegerNode* previous;
     
 public:
-    IntegerNode::IntegerNode(int value, IntegerNode* previous) ;
+    IntegerNode(int value, IntegerNode* previous) ;
     ~IntegerNode();
     int getValue();
     IntegerNode* getNext();
