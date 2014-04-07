@@ -33,6 +33,8 @@ public:
     int getValue();
     IntegerNode* getNext();
     IntegerNode* getPrevious();
+    void setNext(IntegerNode* node);
+    void setPrevious(IntegerNode* node);
 };
 
 #endif /* defined(__cse220_lab4__IntegerNode__) */

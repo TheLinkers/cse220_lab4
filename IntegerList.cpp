@@ -13,7 +13,33 @@
 #include "IntegerList.h"
 
 IntegerList::IntegerList(int value) {
-    
+    this->appendToList(value);
+}
+
+IntegerList::IntegerList(IntegerNode node) {
+    this->appendToList(node);
+}
+
+IntegerList::~IntegerList() {
+    IntegerNode *temp = this->head;
+    while (this->head != NULL){
+		temp = (this_head)-> next;
+		free(head);
+		this->head = temp;
+	}
+}
+
+IntegerNode* IntegerList::getHead() {
+    return this->head;
+} // allows us to find the beginning of the integerlist for printing/deallocating
+
+IntegerNode* IntegerList::getTail() {
+    return this->tail;
+} 
+
+
+void IntegerList::appendToList(int value) {
+    this->tail = IntegerNode(value, this.tail);
     if(this.numberOfNodes = null){
 	numberOfNodes = 1;
     }
@@ -22,7 +48,7 @@ IntegerList::IntegerList(int value) {
     }
 }
 
-IntegerList::IntegerList(IntegerNode node) {
+void IntegerList::appendToList(IntegerNode node) {
     this->tail = value;
     if(this.numberOfNodes = null){
 	numberOfNodes = 1;
@@ -30,29 +56,4 @@ IntegerList::IntegerList(IntegerNode node) {
     else{
 	++numberOfNodes;
     }
-}
-
-IntegerList::~IntegerList() {
-    
-}
-
-int* IntegerList::getFirstValue() {
-    
-} // allows us to find the beginning of the integerlist for printing/deallocating
-
-int IntegerList::getValue(int* address) {
-    
-}
-
-int* IntegerList::getNextValue(int* address) {
-    
-}
-
-void IntegerList::appendToList(int value) {
-    this.tail = IntegerNode(value, this.tail);
-}
-
-void IntegerList::appendToList(IntegerNode node) {
-    this.tail = node;
-    node.
 }

@@ -9,7 +9,6 @@
  
  IntegerNode.cpp
  Lab4 */
-Put /home/dmart/Documents/CSE_220/cse220_lab4/IntegerNode.cpp
 
 #include "IntegerNode.h"
 
@@ -33,4 +32,12 @@ IntegerNode* IntegerNode::getNext() {
 
 IntegerNode* IntegerNode::getPrevious() {
     return this.previous;
+}
+
+void IntegerNode::setNext(IntegerNode* node) {
+    this.next = node;
+}
+
+void IntegerNode::setPrevious(IntegerNode* node) {
+    this.previous = node;
 }
