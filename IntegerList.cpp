@@ -11,3 +11,27 @@
  Lab4 */
 
 #include "IntegerList.h"
+
+IntegerList::IntegerList(int value, int* nextValue) {
+    
+}
+
+IntegerList::~IntegerList() {
+    
+}
+
+int* IntegerList::getFirstValue() {
+    
+} // allows us to find the beginning of the integerlist for printing/deallocating
+
+int IntegerList::getValue(int* address) {
+    
+}
+
+int* IntegerList::getNextValue(int* address) {
+    
+}
+
+void IntegerList::setValue(int value, int* address) {
+    
+}

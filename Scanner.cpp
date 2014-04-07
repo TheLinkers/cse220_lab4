@@ -48,20 +48,20 @@ Scanner::Scanner(FILE *source_file, char source_name[], char date[], Print print
      *******************/
     unsigned int i;
     for (i = 0; i < CHAR_TABLE_SIZE; i++)
-    {
+	{
         if (i >= '0' && i <= '9')
-        {
+	    {
             char_table[i] = DIGIT;
-        }
+	    }
         else if ((i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z'))
-        {
+	    {
             char_table[i] = LETTER;
-        }
+	    }
         else
-        {
+	    {
             char_table[i] = SPECIAL;
-        }
-    }
+	    }
+	}
     char_table['\''] = QUOTE;
     char_table[EOF_CHAR] = EOF_CODE;
     
@@ -77,16 +77,16 @@ bool Scanner::getSourceLine(char source_buffer[])
     char print_buffer[MAX_SOURCE_LINE_LENGTH + 9];
     
     if (fgets(source_buffer, MAX_SOURCE_LINE_LENGTH, src_file) != NULL)
-    {
+	{
         ++line_number;
         sprintf(print_buffer, "%4d: %s", line_number, source_buffer);
         print.printLine(print_buffer);
         return true;
-    }
+	}
     else
-    {
+	{
         return false;
-    }
+	}
 }
 Token* Scanner::getToken()
 {
@@ -95,15 +95,15 @@ Token* Scanner::getToken()
     char *token_ptr = token_string; //write some code to point this to the beginning of token_string
     Token *new_token = new Token();
     
-    //1.  Skip past all of the blanks
+	//1.  Skip past all of the blanks
     if (line_ptr == NULL)
-    {
+	{
         line_ptr = source_line;
-    }
+	}
     skipBlanks(source_line);
     ch = *line_ptr;
     
-    //2.  figure out which case you are dealing with LETTER, DIGIT, QUOTE, EOF, or special, by examining ch
+	//2.  figure out which case you are dealing with LETTER, DIGIT, QUOTE, EOF, or special, by examining ch
     switch (char_table[ch])
     {//3.  Call the appropriate function to deal with the cases in 2.
         case LETTER:
@@ -135,27 +135,27 @@ char Scanner::getChar(char source_buffer[])
     char ch;
     
     if (*line_ptr == '\0')
-    {
+	{
         if (!getSourceLine(source_buffer))
-        {
+	    {
             ch = EOF_CHAR;
             return ch;
-        }
+	    }
         line_ptr = source_buffer;
-    }
+	}
     
     /*
      Write some code to set the character ch to the next character in the buffer
      */
     ch = *line_ptr;
     if ((ch == '\n') || (ch == '\t') || (ch == '\r'))
-    {
+	{
         ch = ' ';
-    }
+	}
     if (ch == '{')
-    {
+	{
         skipComment(source_buffer);
-    }
+	}
     return ch;
 }
 void Scanner::skipBlanks(char source_buffer[])
@@ -165,9 +165,9 @@ void Scanner::skipBlanks(char source_buffer[])
      to the first non blank character
      */
     while (getChar(source_buffer) == ' ' && (*line_ptr != EOF_CHAR))
-    {
+	{
         line_ptr++;
-    }
+	}
 }
 void Scanner::skipComment(char source_buffer[])
 {
@@ -178,9 +178,9 @@ void Scanner::skipComment(char source_buffer[])
     char ch;
     
     do
-    {
+	{
         ch = *line_ptr++;
-    }
+	}
     while ((ch != '}') && (ch != EOF_CHAR));
 }
 void Scanner::getWord(char *str, char *token_ptr, Token *tok)
@@ -190,13 +190,13 @@ void Scanner::getWord(char *str, char *token_ptr, Token *tok)
      */
     char ch = *line_ptr;
     while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
-    {
+	{
         *token_ptr++ = *line_ptr++;
         ch = *line_ptr;
-    }
+	}
     *token_ptr = '\0';
     
-    //Downshift the word, to make it lower case
+	//Downshift the word, to make it lower case
     downshiftWord(str);
     
     /*
@@ -204,10 +204,10 @@ void Scanner::getWord(char *str, char *token_ptr, Token *tok)
      if it is not a reserved word its an identifier.
      */
     if (!isReservedWord(str, tok))
-    {
-        //set token to identifier
+	{
+	    //set token to identifier
         tok->setCode(IDENTIFIER);
-    }
+	}
     tok->setTokenString(string(str));
 }
 void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
@@ -219,64 +219,64 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
     bool int_type = true;
     
     do
-    {
+	{
         *(token_ptr++) = ch;
         ch = *(++line_ptr);
-    }
+	}
     while (char_table[ch] == DIGIT);
     
     if (ch == '.')
-    {
-        //Then we might have a dot or dotdot
+	{
+	    //Then we might have a dot or dotdot
         ch = *(++line_ptr);
         if (ch == '.')
-        {
-            //We have a dotdot, back up ptr and our number is an int.
+	    {
+		//We have a dotdot, back up ptr and our number is an int.
             int_type = true;
             --line_ptr;
-        }
+	    }
         else
-        {
+	    {
             int_type = false;
             *(token_ptr++) = '.';
-            //We have a floating point number
+		//We have a floating point number
             do
-            {
+		{
                 *(token_ptr++) = ch;
                 ch = *(line_ptr++);
-            }
+		}
             while (char_table[ch] == DIGIT);
-        }
-    }
+	    }
+	}
     if (ch == 'e' || ch == 'E')
-    {
+	{
         int_type = false;
         *(token_ptr++) = ch;
         ch = *(++line_ptr);
         if (ch == '+' || ch == '-')
-        {
+	    {
             *(token_ptr++) = ch;
             ch = *(++line_ptr);
-        }
+	    }
         do
-        {
+	    {
             *(token_ptr++) = ch;
             ch = *(++line_ptr);
-        }
+	    }
         while (char_table[ch] == DIGIT);
-    }
+	}
     *token_ptr = '\0';
     tok->setCode(NUMBER);
     if (int_type)
-    {
+	{
         tok->setType(INTEGER_LIT);
         tok->setLiteral((int)atoi(str));
-    }
+	}
     else
-    {
+	{
         tok->setType(REAL_LIT);
         tok->setLiteral((float)atof(str));
-    }
+	}
 }
 void Scanner::getString(char *str, char *token_ptr, Token *tok)
 {
@@ -286,10 +286,10 @@ void Scanner::getString(char *str, char *token_ptr, Token *tok)
     *token_ptr++ = '\'';
     char ch = *(++line_ptr);
     while (ch != '\'')
-    {
+	{
         *token_ptr++ = ch;
         ch = *(++line_ptr);
-    }
+	}
     *token_ptr++ = *line_ptr++;
     *token_ptr = '\0';
     tok->setCode(STRING);
@@ -309,137 +309,137 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
     switch (ch)
     {
         case '^':
-            tok->setCode(UPARROW);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(UPARROW);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '*':
-            tok->setCode(STAR);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(STAR);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '(':
-            tok->setCode(LPAREN);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(LPAREN);
+	token_ptr++;
+	line_ptr++;
+	break;
         case ')':
-            tok->setCode(RPAREN);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(RPAREN);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '-':
-            tok->setCode(MINUS);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(MINUS);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '+':
-            tok->setCode(PLUS);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(PLUS);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '=':
-            tok->setCode(EQUAL);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(EQUAL);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '[':
-            tok->setCode(LBRACKET);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(LBRACKET);
+	token_ptr++;
+	line_ptr++;
+	break;
         case ']':
-            tok->setCode(RBRACKET);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(RBRACKET);
+	token_ptr++;
+	line_ptr++;
+	break;
         case ';':
-            tok->setCode(SEMICOLON);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(SEMICOLON);
+	token_ptr++;
+	line_ptr++;
+	break;
         case ',':
-            tok->setCode(COMMA);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(COMMA);
+	token_ptr++;
+	line_ptr++;
+	break;
         case '/':
-            tok->setCode(SLASH);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(SLASH);
+	token_ptr++;
+	line_ptr++;
+	break;
         case ':':
-            token_ptr++;
-            ch = *(++line_ptr);
-            if (ch == '=')
+	token_ptr++;
+	ch = *(++line_ptr);
+	if (ch == '=')
             {
-                *token_ptr = '=';
-                tok->setCode(COLONEQUAL);
-                token_ptr++;
-                line_ptr++;
+	    *token_ptr = '=';
+	    tok->setCode(COLONEQUAL);
+	    token_ptr++;
+	    line_ptr++;
             }
-            else
+	else
             {
-                tok->setCode(COLON);
+	    tok->setCode(COLON);
             }
-            break;
+	break;
         case '<':
-            token_ptr++;
-            ch = *(++line_ptr);
-            if (ch == '=')
+	token_ptr++;
+	ch = *(++line_ptr);
+	if (ch == '=')
             {
-                *token_ptr = '=';
-                tok->setCode(LE);
-                token_ptr++;
-                line_ptr++;
+	    *token_ptr = '=';
+	    tok->setCode(LE);
+	    token_ptr++;
+	    line_ptr++;
             }
-            else if (ch == '>')
+	else if (ch == '>')
             {
-                *token_ptr = '>';
-                tok->setCode(NE);
-                token_ptr++;
-                line_ptr++;
+	    *token_ptr = '>';
+	    tok->setCode(NE);
+	    token_ptr++;
+	    line_ptr++;
             }
-            else
+	else
             {
-                tok->setCode(LT);
+	    tok->setCode(LT);
             }
-            break;
+	break;
         case '>':
-            token_ptr++;
-            ch = *(++line_ptr);
-            if (ch == '=')
+	token_ptr++;
+	ch = *(++line_ptr);
+	if (ch == '=')
             {
-                *token_ptr = '=';
-                tok->setCode(GE);
-                token_ptr++;
-                line_ptr++;
+	    *token_ptr = '=';
+	    tok->setCode(GE);
+	    token_ptr++;
+	    line_ptr++;
             }
-            else
+	else
             {
-                tok->setCode(GT);
+	    tok->setCode(GT);
             }
-            break;
+	break;
         case '.':
-            token_ptr++;
-            ch = *(++line_ptr);
-            if (ch == '=')
+	token_ptr++;
+	ch = *(++line_ptr);
+	if (ch == '=')
             {
-                *token_ptr = '.';
-                tok->setCode(DOTDOT);
-                token_ptr++;
-                line_ptr++;
+	    *token_ptr = '.';
+	    tok->setCode(DOTDOT);
+	    token_ptr++;
+	    line_ptr++;
             }
-            else
+	else
             {
-                tok->setCode(PERIOD);
+	    tok->setCode(PERIOD);
             }
-            break;
+	break;
         default:
-            tok->setCode(ERROR);
-            token_ptr++;
-            line_ptr++;
-            break;
+	tok->setCode(ERROR);
+	token_ptr++;
+	line_ptr++;
+	break;
     }
     *token_ptr = '\0';
     tok->setTokenString(string(str));
@@ -452,9 +452,9 @@ void Scanner::downshiftWord(char word[])
     int index;
     
     for (index = 0; index < strlen(word); index++)
-    {
+	{
         word[index] = tolower(word[index]);
-    }
+	}
 }
 bool Scanner::isReservedWord(char *str, Token *tok)
 {
@@ -464,18 +464,18 @@ bool Scanner::isReservedWord(char *str, Token *tok)
     size_t str_len = strlen(str);
     
     if (str_len >= 2 && str_len <= 9)
-    {
+	{
         RwStruct rw = rw_table[str_len - 2][0];
         int i;
         for (i = 0; i < 10 && rw_table[str_len - 2][i].token_code != 0; i++)
-        {
+	    {
             rw = rw_table[str_len - 2][i];
             if (strcmp(str, rw.string) == 0)
-            {
+		{
                 tok->setCode(rw.token_code);
                 return true;
-            }
-        }
-    }
+		}
+	    }
+	}
     return false;
 }
