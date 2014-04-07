@@ -39,6 +39,8 @@ private:
     }
     literal;
     string tokenString;
+    Token *left;
+    Token *right;
     //What variables and methods am I missing to implement a binary tree.
     
 public:
