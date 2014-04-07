@@ -23,7 +23,7 @@ IntegerList::IntegerList(IntegerNode node) {
 IntegerList::~IntegerList() {
     IntegerNode *temp = this->head;
     while (this->head != NULL){
-		temp = (this_head)-> next;
+		temp = (is_heap)-> next;
 		free(head);
 		this->head = temp;
 	}
@@ -40,7 +40,7 @@ IntegerNode* IntegerList::getTail() {
 
 void IntegerList::appendToList(int value) {
     this->tail = IntegerNode(value, this->tail);
-    if(this.numberOfNodes = null){
+    if(this->numberOfNodes = null){
 	numberOfNodes = 1;
     }
     else{
@@ -50,7 +50,7 @@ void IntegerList::appendToList(int value) {
 
 void IntegerList::appendToList(IntegerNode node) {
     this->tail = value;
-    if(this.numberOfNodes = null){
+    if(this->numberOfNodes = null){
 	numberOfNodes = 1;
     }
     else{
