@@ -23,15 +23,17 @@ using namespace std;
 class IntegerList
 {
 private:
+    int* firstValue;
     int value;
     int* nextValue;
-    string identifier;		// one list created for each unique identifier in program. May not need the string to be attached to this class
     
 public:
     IntegerList(int value, int* nextValue);
     ~IntegerList();
 
+    int* getFirstValue();		// allows us to find the beginning of the integerlist for printing/deallocating
     int getValue(int* address);
+    int* getNextValue(int* address);
     void setValue(int value, int* address);
 
 };

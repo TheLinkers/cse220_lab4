@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include "common.h"
+#include "IntegerList.h"
 
 using namespace std;
 
@@ -43,6 +44,9 @@ private:
     Token *right;
     //What variables and methods am I missing to implement a binary tree.
     
+    IntegerList list(int value);
+    
+    
 public:
     Token();
     ~Token();
@@ -60,6 +64,8 @@ public:
     string getTokenString();
     void setNextToken(Token *newToken);
     Token* getNextToken();
+    
+    void addLineToList(int value);	// for adding current line number to a specified integerlist
 };
 
 #endif /* defined(__Lab4__Token__) */
