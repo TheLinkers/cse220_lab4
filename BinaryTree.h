@@ -14,5 +14,25 @@
 #define __cse220_lab4__BinaryTree__
 
 #include <iostream>
+#include "common.h"
+#include "Token.h"
+
+using namespace std;
+
+class BinaryTree
+{
+private:
+    Token* rootPtr;
+    
+public:
+    BinaryTree(Token* root, Token newToken);
+    ~BinaryTree();
+    
+    Token* getRightChild(Token* token);
+    Token* getLeftChild(Token* token);
+    void addRightChild(Token* token);
+    void addLeftChild(Token* token);
+};
+
 
 #endif /* defined(__cse220_lab4__BinaryTree__) */
