@@ -48,9 +48,7 @@ void BinaryTree::addRightChild(Token* parent) {
 void BinaryTree::addLeftChild(Token* parent) {
     
 }
-void BinaryTree::deleteTree(){
 
-}
 
 
 
