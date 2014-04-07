@@ -1,7 +1,7 @@
 /*
  Team 15: https://github.com/TheLinkers/cse220_lab4
- Nikolas Conklin:
- Daniel Martin:
+ Nikolas Conklin: nconklin
+ Daniel Martin: plan10-acme
  Matthew Weser: mweser
  
  8 Apr 2014
@@ -15,6 +15,8 @@
  */
 
 #include "Token.h"
+#include "BinaryTree.h"
+#include "IntegerList.h"
 
 Token::Token()
 {
@@ -73,4 +75,9 @@ string Token::getTokenString()
 {
     return this->tokenString;
 }
+// Method to check for existing tokens
+/*boolean Token::isEqual()
+{
+
+}*/
 //What methods am I missing to implement a binary tree.

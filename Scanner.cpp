@@ -1,7 +1,7 @@
 /*
  Team 15: https://github.com/TheLinkers/cse220_lab4
- Nikolas Conklin:
- Daniel Martin:
+ Nikolas Conklin: nconklin
+ Daniel Martin: plan10-acme
  Matthew Weser: mweser
  
  8 Apr 2014
