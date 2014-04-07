@@ -25,7 +25,7 @@ class IntegerList
 private:
     int value;
     int* nextValue;
-    string identifier;		// one list created for each unique identifier in program
+    string identifier;		// one list created for each unique identifier in program. May not need the string to be attached to this class
     
 public:
     IntegerList(int value, int* nextValue);

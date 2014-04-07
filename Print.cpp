@@ -16,6 +16,8 @@
 
 #include "Print.h"
 #include "Token.h"
+#include "BinaryTree.h"
+#include "IntegerList.h"
 
 const char* const SYMBOL_STRINGS[] =
 {
@@ -98,18 +100,26 @@ void Print::printToken(Token *token)
     printLine(line);
 }
 
-void Print::printTree(Token* root, BinaryTree tree) {
+void Print::PrintTree(Token* root, BinaryTree tree) {
 	// starts with the root of the BinaryTree and prints in alphabetical order
+	// happens at the end of printing all the tokens in the usual manner
     cout << "Cross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
 	
 	// first step is finding bottom left leaf (first in ABC order)
     	// checks left child until NULL reached, then definitely at the beginning
     Token* leftChild = root;
+    Token* grandParent = root;		// needs to be offset from child by two
+    Token* rightChild = root;			// opposite side from leftChild (obviously)
+    Token* parent = root;			// offset from child by one
+    
     while (tree.getLeftChild(parent) != NULL) {
 	leftChild = tree.getLeftChild(parent);
     }
     
 	// then print in order: leftChild, parent, rightChild, grandparent, newBottomLeft, repeat
+	// for each token, need to print out IntegerList
+    m
+    
     
     
     
