@@ -38,6 +38,7 @@ public:
     
     void printLine(char line[]);
     void printToken(Token *token);
+    void printTree(Token* root);
 };
 
 #endif /* defined(__Lab4__Print__) */

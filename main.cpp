@@ -8,11 +8,11 @@
  CSE 220
  10:30am T Th
  
-//  main.cpp
-//  Lab4
-//
-//  Created by Bryce Holton.
-*/
+ //  main.cpp
+ //  Lab4
+ //
+ //  Created by Bryce Holton.
+ */
 
 #include <iostream>
 #include "common.h"
@@ -42,22 +42,22 @@ int main(int argc, const char * argv[])
     BinaryTree tree = new BinaryTree();		// not sure how to properly initialize/set the root of the tree
     
     do
-    {
+	{
         token = scanner.getToken();
         print.printToken(token);
 	
-	// BinaryTree stuff goes here
-	// If token is IDENTIFIER type, sends token pointer to tree to check if it exists
-    if (token->getCode() == IDENTIFIER) {
-	tree.addToken(*token);
-    }
-    
-    
+	    // BinaryTree stuff goes here
+	    // If token is IDENTIFIER type, sends token pointer to tree to check if it exists
+	if (token->getCode() == IDENTIFIER) {
+	    tree.addToken(*token);
+	}
+	
+	
         if (token->getCode() != PERIOD && token->getCode() != END_OF_FILE)
-        {
+	    {
             delete token;
-        }
-    }
+	    }
+	}
     while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
     
     delete token;
