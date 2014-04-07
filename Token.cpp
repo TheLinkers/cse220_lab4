@@ -80,6 +80,10 @@ string Token::getTokenString()
 // Method to check for existing tokens
 /*boolean Token::isEqual()
 {
-
-}*/
-//What methods am I missing to implement a binary tree.
+	// check if string from token is equal to the one in the binary tree
+    	// may not need this method here, but elsewhere
+    	// I'll leave this commented in case this is a good home for it
+    
+    
+}
+What methods am I missing to implement a binary tree.*/

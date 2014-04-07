@@ -103,7 +103,7 @@ void Print::printToken(Token *token)
 void Print::PrintTree(Token* root, BinaryTree tree) {
 	// starts with the root of the BinaryTree and prints in alphabetical order
 	// happens at the end of printing all the tokens in the usual manner
-    cout << "Cross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
+    cout << "\n\nCross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
 	
 	// first step is finding bottom left leaf (first in ABC order)
     	// checks left child until NULL reached, then definitely at the beginning

@@ -11,6 +11,8 @@
  Lab4 */
 
 #include "BinaryTree.h"
+#include "Token.h"
+#include "IntegerList.h"
 
 
 

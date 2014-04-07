@@ -12,8 +12,8 @@
 
 #include "IntegerList.h"
 
-IntegerList::IntegerList(int value, int* nextValue) {
-    
+IntegerList::IntegerList(int value) {
+    this->value = value;
 }
 
 IntegerList::~IntegerList() {

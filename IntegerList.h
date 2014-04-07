@@ -28,7 +28,7 @@ private:
     int* nextValue;
     
 public:
-    IntegerList(int value, int* nextValue);
+    IntegerList(int value);
     ~IntegerList();
 
     int* getFirstValue();		// allows us to find the beginning of the integerlist for printing/deallocating
