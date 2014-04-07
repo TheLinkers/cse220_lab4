@@ -17,25 +17,27 @@
 #include "common.h"
 #include "Token.h"
 #include "BinaryTree.h"
+#include "IntegerNode.h"
 
 using namespace std;
 
 class IntegerList
 {
 private:
-    int* firstValue;
-    int value;
-    int* nextValue;
+    IntegerNode* head;
+    IntegerNode* tail;
+    int numberOfNodes;
     
 public:
+    IntegerList(IntegerNode node);
     IntegerList(int value);
     ~IntegerList();
 
     int* getFirstValue();		// allows us to find the beginning of the integerlist for printing/deallocating
     int getValue(int* address);
     int* getNextValue(int* address);
-    void setValue(int value, int* address);
-
+    void appendToList(int value);
+    void appendToList(IntegerNode node);
 };
 
 

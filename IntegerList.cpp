@@ -13,7 +13,23 @@
 #include "IntegerList.h"
 
 IntegerList::IntegerList(int value) {
-    this->value = value;
+    
+    if(this.numberOfNodes = null){
+	numberOfNodes = 1;
+    }
+    else{
+	++numberOfNodes;
+    }
+}
+
+IntegerList::IntegerList(IntegerNode node) {
+    this->tail = value;
+    if(this.numberOfNodes = null){
+	numberOfNodes = 1;
+    }
+    else{
+	++numberOfNodes;
+    }
 }
 
 IntegerList::~IntegerList() {
@@ -32,6 +48,11 @@ int* IntegerList::getNextValue(int* address) {
     
 }
 
-void IntegerList::setValue(int value, int* address) {
-    
+void IntegerList::appendToList(int value) {
+    this.tail = IntegerNode(value, this.tail);
+}
+
+void IntegerList::appendToList(IntegerNode node) {
+    this.tail = node;
+    node.
 }
