@@ -105,21 +105,18 @@ void Print::printTree(Token* root, BinaryTree tree) {
 	// happens at the end of printing all the tokens in the usual manner
     cout << "\n\nCross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
 	
-	// first step is finding bottom left leaf (first in ABC order)
-    	// checks left child until NULL reached, then definitely at the beginning
-    Token* leftChild = root;
-    Token* grandParent = root;		// needs to be offset from child by two
-    Token* rightChild = root;			// opposite side from leftChild (obviously)
-    Token* parent = root;			// offset from child by one
-    
-    while (tree.getLeftChild(parent) != NULL) {
-	leftChild = tree.getLeftChild(parent);
-    }
-    
-	// then print in order: leftChild, parent, rightChild, grandparent, newBottomLeft, repeat
-	// for each token, need to print out IntegerList
-    
-    
+	/* Pseudocode
+	 1. Print header (above)
+	 2. Find first token (alphabetically) and print its string
+	 3. Tab over
+	 4. Access token's integerList and increment through linked list printing ints until NULL
+	 5. New line
+	 6. Print next token (alphabetically [parent in tree])
+	 7. Repeat process of printing respective integerList
+	 8. Continue until BinaryTree is completed (NULL)
+	 */
+	
+
     
     
     
