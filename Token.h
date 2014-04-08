@@ -69,6 +69,7 @@ public:
     Token* getNextToken();
     
     void addLineToList(int value);	// for adding current line number to a specified integerlist
+    void printList();					// loops through integerList in Token and direcly couts the contents
 };
 
 #endif /* defined(__Lab4__Token__) */

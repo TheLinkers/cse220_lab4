@@ -79,8 +79,15 @@ string Token::getTokenString()
 }
 void Token::addLineToList(int value)
 {
-	this->list.appendToList(value);
+	this->list->appendToList(value);
 }
+
+void Token::printList() {
+    
+}// loops through integerList in Token and direcly couts the contents
+
+
+
 // Method to check for existing tokens
 /*boolean Token::isEqual()
 {

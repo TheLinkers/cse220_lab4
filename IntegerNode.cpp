@@ -23,21 +23,21 @@ IntegerNode::~IntegerNode() {
 }
 
 int IntegerNode::getValue() {
-    return this.value;
+    return this->value;
 }
 
 IntegerNode* IntegerNode::getNext() {
-    return this.next;
+    return this->next;
 }
 
 IntegerNode* IntegerNode::getPrevious() {
-    return this.previous;
+    return this->previous;
 }
 
 void IntegerNode::setNext(IntegerNode* node) {
-    this.next = node;
+    this->next = node;
 }
 
 void IntegerNode::setPrevious(IntegerNode* node) {
-    this.previous = node;
+    this->previous = node;
 }

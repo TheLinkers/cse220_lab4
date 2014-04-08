@@ -121,12 +121,19 @@ void Print::printTree(Token* root, BinaryTree tree) {
     token = tree.getFirstToken();
     tokenString = token->getTokenString();
     cout << tokenString << "\t\t";
+	
+	// need to print integerlist contents
+    token->printList();
+    
 
     while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
 	token = tree.next(token);				// grabs next token in the binaryTree
 	tokenString = token->getTokenString();
 	cout << tokenString << "\t\t";
-    }
+	    
+	    // need to print integerlist contents
+	token->printList();
+    }	// end of loop
    
     
     
