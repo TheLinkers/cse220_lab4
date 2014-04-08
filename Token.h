@@ -47,7 +47,7 @@ private:
     Token *right;
     //What variables and methods am I missing to implement a binary tree.
     
-    IntegerList list;		// not sure why Xcode isn't recognizing type here
+    IntegerList* list;		// forward declaration only allows declarations of pointers
     
     
 public:
