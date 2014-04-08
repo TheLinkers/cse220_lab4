@@ -122,8 +122,8 @@ void Print::printTree(Token* root, BinaryTree tree) {
     tokenString = token->getTokenString();
     cout << tokenString << "\t\t";
 
-    while (tree.isNotDone) {			// checks boolean for whether end of binaryTree has been reached
-	token = tree.next(token);		// grabs next token in the binaryTree
+    while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
+	token = tree.next(token);				// grabs next token in the binaryTree
 	tokenString = token->getTokenString();
 	cout << tokenString << "\t\t";
     }
