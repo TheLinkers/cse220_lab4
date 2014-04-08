@@ -77,6 +77,10 @@ string Token::getTokenString()
 {
     return this->tokenString;
 }
+void Token::addLineToList(int value)
+{
+	this->list.appendToList(value);
+}
 // Method to check for existing tokens
 /*boolean Token::isEqual()
 {
