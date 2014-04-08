@@ -37,19 +37,19 @@ public:
     BinaryTree(Token* root, Token newToken);
     ~BinaryTree();
     
-    void treeIterate(Token* parent);		// keeps track of grandparent, parent, and children. Use get methods to grab data members
-    void findAlpha(Token* parent);		// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
+    void treeIterate(Token* currentToken);		// keeps track of grandparent, parent, and children. Use get methods to grab data members
+    void findAlpha(Token* currentToken);		// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
     
     Token* getFirstToken();						// TODO: Implement this
-    Token* getGrandParent(Token* parent);		// not sure about parameters. May not need them, as will simply access current grandParent. Could also iterate from the root to the point where the parent is, as a search function just in case
-    Token* getParent(Token* parent);
-    Token* getRightChild(Token* parent);
-    Token* getLeftChild(Token* parent);
+    Token* getGrandParent(Token* currentToken);		// not sure about parameters. May not need them, as will simply access current grandParent. Could also iterate from the root to the point where the parent is, as a search function just in case
+    Token* getParent(Token* currentToken);
+    Token* getRightChild(Token* currentToken);
+    Token* getLeftChild(Token* currentToken);
     Token* getCurrentToken();
     Token* next(Token* currentToken);			// needs to change the parent/family fields
     bool isNotDone(Token* currentToken);		// boolean returns false only when all members of the tree have been used
-    void addRightChild(Token* parent);
-    void addLeftChild(Token* parent);
+    void addRightChild(Token* currentToken);
+    void addLeftChild(Token* currentToken);
     
 };
 
