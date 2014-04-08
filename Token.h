@@ -19,9 +19,12 @@
 
 #include <iostream>
 #include "common.h"
-#include "IntegerList.h"
+#include "BinaryTree.h"
+#include "IntegerNode.h"
 
 using namespace std;
+
+class IntegerList;
 
 /**************
  this is a valid Pascal token.  A token must have a literal type,
