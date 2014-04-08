@@ -104,7 +104,9 @@ void Print::printTree(Token* root, BinaryTree tree) {
 	// starts with the root of the BinaryTree and prints in alphabetical order
 	// happens at the end of printing all the tokens in the usual manner
     cout << "\n\nCross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
-	
+    string tokenString;
+    Token* token;
+    
 	/* Pseudocode
 	 1. Print header (above)
 	 2. Find first token (alphabetically) and print its string
@@ -116,7 +118,16 @@ void Print::printTree(Token* root, BinaryTree tree) {
 	 8. Continue until BinaryTree is completed (NULL)
 	 */
 	
+    token = tree.getFirstToken();
+    tokenString = token->getTokenString();
+    cout << tokenString << "\t\t";
 
+    while (tree.isNotDone) {			// checks boolean for whether end of binaryTree has been reached
+	token = tree.next(token);		// grabs next token in the binaryTree
+	tokenString = token->getTokenString();
+	cout << tokenString << "\t\t";
+    }
+   
     
     
     
