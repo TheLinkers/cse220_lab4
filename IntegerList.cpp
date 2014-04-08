@@ -50,8 +50,8 @@ void IntegerList::appendToList(int value) {
 
 void IntegerList::appendToList(IntegerNode node) {
     this->tail = value;
-    if(this->numberOfNodes = null){
-	numberOfNodes == 1;
+    if(this->numberOfNodes == NULL){
+	numberOfNodes = 1;
     }
     else{
 	++numberOfNodes;
