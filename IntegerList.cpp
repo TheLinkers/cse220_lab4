@@ -40,7 +40,7 @@ IntegerNode* IntegerList::getTail() {
 
 void IntegerList::appendToList(int value) {
     this->tail = IntegerNode(value, this->tail);
-    if(this->numberOfNodes = null){
+    if(this->numberOfNodes == NULL){
 	numberOfNodes = 1;
     }
     else{
