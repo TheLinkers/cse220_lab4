@@ -17,9 +17,10 @@
 #include "common.h"
 #include "Token.h"
 #include "BinaryTree.h"
-#include "IntegerNode.h"
 
 using namespace std;
+
+class IntegerNode;
 
 class IntegerList
 {

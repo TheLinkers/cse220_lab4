@@ -17,6 +17,7 @@
 #include "common.h"
 #include "Token.h"
 #include "BinaryTree.h"
+#include "IntegerList.h"
 
 using namespace std;
 

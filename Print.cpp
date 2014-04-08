@@ -100,7 +100,7 @@ void Print::printToken(Token *token)
     printLine(line);
 }
 
-void Print::PrintTree(Token* root, BinaryTree tree) {
+void Print::printTree(Token* root, BinaryTree tree) {
 	// starts with the root of the BinaryTree and prints in alphabetical order
 	// happens at the end of printing all the tokens in the usual manner
     cout << "\n\nCross Reference Information\nIdentifier\t\t\tLine Numbers\n-----------\t\t\t------------\n";
@@ -118,7 +118,7 @@ void Print::PrintTree(Token* root, BinaryTree tree) {
     
 	// then print in order: leftChild, parent, rightChild, grandparent, newBottomLeft, repeat
 	// for each token, need to print out IntegerList
-    m
+    
     
     
     

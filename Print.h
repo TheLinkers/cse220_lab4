@@ -38,7 +38,7 @@ public:
     
     void printLine(char line[]);
     void printToken(Token *token);
-    void printTree(Token* root);
+    void printTree(Token* root, BinaryTree tree);
 };
 
 #endif /* defined(__Lab4__Print__) */
