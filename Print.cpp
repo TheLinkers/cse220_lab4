@@ -49,24 +49,24 @@ void Print::printLine(char line[])
     static int line_count = MAX_LINES_PER_PAGE;
     
     if (++line_count > MAX_LINES_PER_PAGE)
-    {
+	{
         printPageHeader();
         line_count = 1;
-    }
+	}
     if (strlen(line) > MAX_PRINT_LINE_LENGTH)
-    {
+	{
         save_chp = &line[MAX_PRINT_LINE_LENGTH];
-    }
+	}
     if (save_chp)
-    {
+	{
         save_ch = *save_chp;
         *save_chp = '\0';
-    }
+	}
     printf("%s", line);
     if (save_chp)
-    {
+	{
         *save_chp = save_ch;
-    }
+	}
 }
 void Print::printPageHeader()
 {
@@ -81,21 +81,21 @@ void Print::printToken(Token *token)
     switch (token->getCode())
     {
         case NUMBER:
-            if (token->getType() == INTEGER_LIT)
+	if (token->getType() == INTEGER_LIT)
             {
-                sprintf(line, "    >> %-16s %d (integer)\n", symbol_string, token->getIntLiteral());
+	    sprintf(line, "    >> %-16s %d (integer)\n", symbol_string, token->getIntLiteral());
             }
-            else
+	else
             {
-                sprintf(line, "    >> %-16s %g (real)\n", symbol_string, token->getRealLiteral());
+	    sprintf(line, "    >> %-16s %g (real)\n", symbol_string, token->getRealLiteral());
             }
-            break;
+	break;
         case STRING:
-            sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getStringLiteral().c_str());
-            break;
+	sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getStringLiteral().c_str());
+	break;
         default:
-            sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getTokenString().c_str());
-            break;
+	sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getTokenString().c_str());
+	break;
     }
     printLine(line);
 }
@@ -107,34 +107,34 @@ void Print::printTree(Token* root, BinaryTree tree) {
     string tokenString;
     Token* token;
     
-	/* Pseudocode
-	 1. Print header (above)
-	 2. Find first token (alphabetically) and print its string
-	 3. Tab over
-	 4. Access token's integerList and increment through linked list printing ints until NULL
-	 5. New line
-	 6. Print next token (alphabetically [parent in tree])
-	 7. Repeat process of printing respective integerList
-	 8. Continue until BinaryTree is completed (NULL)
-	 */
-	
+    /* Pseudocode
+     1. Print header (above)
+     2. Find first token (alphabetically) and print its string
+     3. Tab over
+     4. Access token's integerList and increment through linked list printing ints until NULL
+     5. New line
+     6. Print next token (alphabetically [parent in tree])
+     7. Repeat process of printing respective integerList
+     8. Continue until BinaryTree is completed (NULL)
+     */
+    
     token = tree.getFirstToken();
     tokenString = token->getTokenString();
     cout << tokenString << "\t\t";
-	
+    
 	// need to print integerlist contents
     token->printList();
     
-
+    
     while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
 	token = tree.next(token);				// grabs next token in the binaryTree
 	tokenString = token->getTokenString();
 	cout << tokenString << "\t\t";
-	    
+	
 	    // need to print integerlist contents
 	token->printList();
     }	// end of loop
-   
+    
     
     
     

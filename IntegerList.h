@@ -33,7 +33,7 @@ public:
     IntegerList(IntegerNode node);
     IntegerList(int value);
     ~IntegerList();
-
+    
     IntegerNode* getHead();		// allows us to find the beginning of the integerlist for printing/deallocating
     void appendToList(int value);
     void appendToList(IntegerNode node);

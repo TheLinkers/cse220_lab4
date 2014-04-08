@@ -21,7 +21,7 @@
 
 using namespace std;
 
-class Token; 
+class Token;
 
 class BinaryTree
 {

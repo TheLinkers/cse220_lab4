@@ -20,13 +20,13 @@
 
 Token::Token()
 {
- this->left = NULL;
- this->right = NULL;
-    //What code do I need here to initialize everything.
+    this->left = NULL;
+    this->right = NULL;
+	//What code do I need here to initialize everything.
 }
 Token::~Token()
 {
-    //What code do I need here to free memory
+	//What code do I need here to free memory
 }
 void Token::setCode(TokenCode newCode)
 {
@@ -79,7 +79,7 @@ string Token::getTokenString()
 }
 void Token::addLineToList(int value)
 {
-	this->list->appendToList(value);
+    this->list->appendToList(value);
 }
 
 void Token::printList() {
@@ -88,13 +88,13 @@ void Token::printList() {
 
 
 
-// Method to check for existing tokens
+    // Method to check for existing tokens
 /*boolean Token::isEqual()
-{
-	// check if string from token is equal to the one in the binary tree
-    	// may not need this method here, but elsewhere
-    	// I'll leave this commented in case this is a good home for it
-    
-    
-}
-What methods am I missing to implement a binary tree.*/
+ {
+ // check if string from token is equal to the one in the binary tree
+ // may not need this method here, but elsewhere
+ // I'll leave this commented in case this is a good home for it
+ 
+ 
+ }
+ What methods am I missing to implement a binary tree.*/

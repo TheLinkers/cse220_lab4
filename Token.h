@@ -37,15 +37,15 @@ private:
     LiteralType type;
     union
     {
-        int integer;
-        float real;
-        char *stringLiteral;
+    int integer;
+    float real;
+    char *stringLiteral;
     }
     literal;
     string tokenString;
     Token *left;
     Token *right;
-    //What variables and methods am I missing to implement a binary tree.
+	//What variables and methods am I missing to implement a binary tree.
     
     IntegerList* list;		// forward declaration only allows declarations of pointers
     

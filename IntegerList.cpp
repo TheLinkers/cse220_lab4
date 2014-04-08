@@ -23,10 +23,10 @@ IntegerList::IntegerList(IntegerNode node) {
 IntegerList::~IntegerList() {
     IntegerNode *temp = this->head;
     while (this->head != NULL){
-		temp = (is_heap)-> next;
-		free(head);
-		this->head = temp;
-	}
+	temp = (is_heap)-> next;
+	free(head);
+	this->head = temp;
+    }
 }
 
 IntegerNode* IntegerList::getHead() {
@@ -35,7 +35,7 @@ IntegerNode* IntegerList::getHead() {
 
 IntegerNode* IntegerList::getTail() {
     return this->tail;
-} 
+}
 
 
 void IntegerList::appendToList(int value) {
