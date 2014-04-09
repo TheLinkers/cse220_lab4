@@ -25,7 +25,7 @@ IntegerList::IntegerList(IntegerNode node) {
 IntegerList::~IntegerList() {
     IntegerNode *temp = this->head;
     while (this->head != NULL){
-	temp = (is_heap)-> next;
+	temp = head->getNext();
 	free(head);
 	this->head = temp;
     }
@@ -41,8 +41,8 @@ IntegerNode* IntegerList::getTail() {
 
 
 void IntegerList::appendToList(int value) {
-    this->tail = IntegerNode(value, this->tail);
-    if(this->numberOfNodes == NULL){
+    *tail = IntegerNode(value, this->tail);
+    if(this->numberOfNodes == NULL) {		// not sure what is going on here: warning thrown
 	numberOfNodes = 1;
     }
     else{
@@ -51,8 +51,8 @@ void IntegerList::appendToList(int value) {
 }
 
 void IntegerList::appendToList(IntegerNode node) {
-    this->tail = node;
-    if(this->numberOfNodes == NULL){
+    this->tail = &node;
+    if(this->numberOfNodes == NULL) {		// not sure what is going on here: warning thrown
 	numberOfNodes = 1;
     }
     else{
