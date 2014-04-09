@@ -33,13 +33,13 @@ int main(int argc, const char * argv[])
      so that it satisfies the project problem.  Currently, this just
      prints every token and then deletes every token.
      *****************************************/
-    Token *token = NULL;
+    Token *token = NULL;		// not sure if this may throw errors or not: how to properly allocate in memory? need to keep root of binaryTree in mind
     char source_name[MAX_FILE_NAME_LENGTH];
     char date[DATE_STRING_LENGTH];
     FILE *source_file = init_lister(argv[1], source_name, date);
     Print print(source_name, date);
     Scanner scanner(source_file, source_name, date, print);
-    BinaryTree tree = new BinaryTree();		// not sure how to properly initialize/set the root of the tree
+    BinaryTree *tree = new BinaryTree(token);					// not sure how to properly initialize/set the root of the tree
     
     do
 	{
@@ -49,7 +49,7 @@ int main(int argc, const char * argv[])
 	    // BinaryTree stuff goes here
 	    // If token is IDENTIFIER type, sends token pointer to tree to check if it exists
 	if (token->getCode() == IDENTIFIER) {
-	    tree.addToken(*token);
+	    tree->addToken(token);
 	}
 	
 	

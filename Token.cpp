@@ -20,8 +20,8 @@
 
 Token::Token()
 {
-    this->left = NULL;
-    this->right = NULL;
+    leftChild = NULL;
+    rightChild = NULL;
 	//What code do I need here to initialize everything.
 }
 Token::~Token()
