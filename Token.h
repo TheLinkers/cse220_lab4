@@ -44,12 +44,13 @@ private:
     literal;
     string tokenString;
     
-    Token *grandparent;		// grandparent in binaryTree: set when added to tree structure
+    Token *grandparent;	// grandparent in binaryTree: set when added to tree structure
     Token *parent;			// parent in binaryTree: set when added to binary tree
     Token *leftChild;		// children in the binaryTree structure
     Token *rightChild;
     IntegerList* list;		// forward declaration only allows declarations of pointers
-    
+    bool leftCalled = false;
+    bool rightCalled = true;
     
 public:
     Token();
@@ -76,6 +77,10 @@ public:
     void setParent(Token*);
     void setGrandparent(Token*);
     
+    bool hasRightCalled();
+    void setRightCalled(bool rightCalled);
+    bool hasLeftCalled();
+    void setLeftCalled(bool leftCalled);	// lets the token know to go for rightChild on next pass through the BinaryTree
     void addLineToList(int value);	// for adding current line number to a specified integerlist
     void printList();					// loops through integerList in Token and direcly couts the contents
 };

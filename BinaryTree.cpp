@@ -31,12 +31,13 @@ void BinaryTree::addToken(Token* newToken) {
     bool notYetHome = true;
     string tokenString = newToken->getTokenString();
     string leafString = root->getTokenString();
+	// perhaps name one of these the treePointer for the current location searching for
     
     /* Tree addition logic:
      1. Start at root
      2. Grab root string
      3. Check IF token string is less or greater than root string
-     4. Move left or right, respectively 
+     4. Move left or right, respectively
      5. If child doesn't exist in the spot, then fill it in (set newToken equal to the child)
      6. Set notYetHome equal to false
      7. Else navigate to that child and set the string equal to leafstring and check again
@@ -72,21 +73,65 @@ void BinaryTree::addToken(Token* newToken) {
 	    
 	}
 	leafString = parent->getTokenString();
-    } 
+    }
 }
 
 
 
     // sifting methods
-void BinaryTree::treeIterate(Token* currentToken) {
+Token* BinaryTree::treeIterate(Token* currentToken) {
 	// idea here is to be able to call one method from print to go to the next alphabetical member of the tree
     	// will need to keep track of the token family members in order to go in the right order
     	// some interesting cases will come up when the tree is incomplete in some ways
 	// also need to avoid calling the same token more than once
     	// perhaps some sort of deallocate/shrink functionality that makes the remaining children "jump" up a generation or something
     
+    /* Alphabetical Iterate Logic
+     1. Have a "case" integer that designates what family member was just pulled (0 for leftChild, 1 for parent, etc.)
+     2. Move-> bottom left child, parent, bottom left child of right child, parent (right child), etc.
+     3. Return token with each iterate
+     */
+    Token* returnToken = root;
     
-} // keeps track of grandparent, parent, and children. Use get methods to grab data members
-void BinaryTree::findAlpha(Token *currentToken) {
+    if (currentToken->getLeftChild() != NULL && currentToken->hasLeftCalled() == false) {
+	returnToken = findAlpha(currentToken);		// make sure to have condition for if already in the far left
+	currentToken->setLeftCalled(true);
+	return returnToken;
+    } else if (currentToken->getRightChild() != NULL && currentToken->hasLeftCalled() == true) {
+	currentToken = currentToken->getRightChild();
+	if (currentToken->getLeftChild() != NULL) {
+		// needs to seek far left inside first, then will loop back through anyhow
+	    returnToken = findAlpha(currentToken);
+	}
+	return returnToken;
+    } else if (currentToken->getLeftChild() == NULL && currentToken->getRightChild() == NULL) {	// at the end of a leaf
+    	currentToken = root;		// start at root and find where first unused parent is
+	if (root->hasLeftCalled() == false) {
+	    do {
+		currentToken = currentToken->getLeftChild();	// increments through unused parents
+	    } while (currentToken->hasLeftCalled() == false && currentToken->getLeftChild() != NULL);
+	} else if (root->hasRightCalled()) {		// may have some bugs in here
+	    return root;
+	} else {
+	    currentToken = root->getRightChild();
+	}
+
+    } else {
+	returnToken = currentToken->getParent();
+	return returnToken;
+    }
+    return returnToken;
+}
+
+
+    // keeps track of grandparent, parent, and children. Use get methods to grab data members
+Token* BinaryTree::findAlpha(Token* currentToken) {
+    Token *treePointer = currentToken;
+    
+    while (treePointer->getLeftChild() != NULL) {
+	treePointer = treePointer->getLeftChild();
+    }
+    
+    return treePointer;
     
 } // iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])

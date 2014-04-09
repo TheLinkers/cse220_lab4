@@ -32,14 +32,15 @@ private:
     Token* leftChild;
     Token* rightChild;
     Token* currentToken;
+    bool seekLeft = true;		// used in list iterate, defines whether should take findAlpha or the parent as the next alphabetical token
     
 public:
     BinaryTree(Token* root);
     ~BinaryTree();
     
     void addToken(Token* newToken);		// places new token in proper alphabetical location
-    void treeIterate(Token* currentToken);		// keeps track of grandparent, parent, and children. Use get methods to grab data members
-    void findAlpha(Token* currentToken);		// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
+    Token* treeIterate(Token* currentToken);		// keeps track of grandparent, parent, and children. Use get methods to grab data members
+    Token* findAlpha(Token* currentToken);		// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
     
     Token* getFirstToken();						// TODO: Implement this
     Token* getGrandParent(Token* currentToken);		// not sure about parameters. May not need them, as will simply access current grandParent. Could also iterate from the root to the point where the parent is, as a search function just in case
