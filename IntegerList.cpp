@@ -14,10 +14,12 @@
 
 IntegerList::IntegerList(int value) {
     this->appendToList(value);
+    this->head = this->tail;
 }
 
 IntegerList::IntegerList(IntegerNode node) {
     this->appendToList(node);
+    this->head = this->tail;
 }
 
 IntegerList::~IntegerList() {
@@ -49,7 +51,7 @@ void IntegerList::appendToList(int value) {
 }
 
 void IntegerList::appendToList(IntegerNode node) {
-    this->tail = value;
+    this->tail = node;
     if(this->numberOfNodes == NULL){
 	numberOfNodes = 1;
     }
