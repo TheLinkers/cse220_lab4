@@ -25,8 +25,8 @@ class IntegerNode;
 class IntegerList
 {
 private:
-    IntegerNode* head;
-    IntegerNode* tail;
+    IntegerNode* head;			// start of linked list
+    IntegerNode* tail;			// addition to list (copy address to previous pointer)
     int numberOfNodes;
     
 public:

@@ -122,8 +122,8 @@ void Print::printTree(Token* root, BinaryTree tree) {
     tokenString = token->getTokenString();
     cout << tokenString << "\t\t";
     
-	// need to print integerlist contents
-    token->printList();
+    token->printList();		// need to print integerlist contents
+
     
     
     while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
@@ -131,14 +131,13 @@ void Print::printTree(Token* root, BinaryTree tree) {
 	tokenString = token->getTokenString();
 	cout << tokenString << "\t\t";
 	
-	    // need to print integerlist contents
-	token->printList();
+	token->printList();	 // need to print integerlist contents
     }	// end of loop
     
     
     
     
-}
+}	// end of printTree method and visible part of program
 
 
 

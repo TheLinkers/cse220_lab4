@@ -27,6 +27,8 @@ Token::Token()
 Token::~Token()
 {
 	//What code do I need here to free memory
+    
+    
 }
 void Token::setCode(TokenCode newCode)
 {
@@ -83,6 +85,16 @@ void Token::addLineToList(int value)
 }
 
 void Token::printList() {
+    int printValue;
+    IntegerNode* currentNode = list->getHead();	// first IntegerNode from list
+    
+    while (currentNode)  {						// when currentNode != NULL (may need to change to satisfy boolean
+	printValue = currentNode->getValue();		// grabs first int from the list
+	cout << printValue << "\t";
+	currentNode = currentNode->getNext();		// increments to next IntegerNode to print
+    }
+    
+    cout << "\n";	// end of line
     
 }// loops through integerList in Token and direcly couts the contents
 
