@@ -15,40 +15,50 @@
 #include "IntegerList.h"
 
 
-
-BinaryTree::BinaryTree(Token* root, Token newToken) {
-    
+    // creation method
+BinaryTree::BinaryTree(Token* root) {
+    this->root = root;
 }
 BinaryTree::~BinaryTree() {
     
 }
 
-void BinaryTree::treeIterate(Token* currentToken) {
+    // adding methods: need to compare strings of tokens
+    // stores values of family tokens into tokens as they go: just create each family member as temporary token pointers in method
+void BinaryTree::addToken(Token* newToken) {
+    Token* grandParent = root;
+    Token* parent = root;
+    bool notYetHome = true;
+    string tokenString = newToken->getTokenString();
+    string leafString = root->getTokenString();
+
+    while (notYetHome) {			// once token has been placed, set to false
+	if (tokenString < leafString) {
+		// move to left
+	    
+	    
+	} else if (tokenString > leafString) {
+		// move to right
+	} else {
+	    cout << "Tree addition error\n";
+	}
+    }
     
-}// keeps track of grandparent, parent, and children. Use get methods to grab data members
+    
+}
+
+
+
+    // sifting methods
+void BinaryTree::treeIterate(Token* currentToken) {
+	// idea here is to be able to call one method from print to go to the next alphabetical member of the tree
+    	// will need to keep track of the token family members in order to go in the right order
+    	// some interesting cases will come up when the tree is incomplete in some ways
+	// also need to avoid calling the same token more than once
+    	// perhaps some sort of deallocate/shrink functionality that makes the remaining children "jump" up a generation or something
+    
+    
+} // keeps track of grandparent, parent, and children. Use get methods to grab data members
 void BinaryTree::findAlpha(Token *currentToken) {
     
-}// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
-
-Token* BinaryTree::getGrandParent(Token* currentToken) {
-    
-}// not sure about parameters. May not need them, as will simply access current grandParent. Could also iterate from the root to the point where the parent is, as a search function just in case
-Token* BinaryTree::getParent(Token* currentToken) {
-    
-}
-Token* BinaryTree::getRightChild(Token* currentToken) {
-    
-}
-Token* BinaryTree::getLeftChild(Token* currentToken) {
-    
-}
-void BinaryTree::addRightChild(Token* currentToken) {
-    
-}
-void BinaryTree::addLeftChild(Token* currentToken) {
-    
-}
-
-
-
-
+} // iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])

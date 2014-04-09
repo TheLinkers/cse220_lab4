@@ -26,7 +26,7 @@ class Token;
 class BinaryTree
 {
 private:
-    Token* root;
+    Token* root;				// beginning of binaryTree. Most important token pointer
     Token* grandParent;
     Token* parent;
     Token* leftChild;
@@ -34,9 +34,10 @@ private:
     Token* currentToken;
     
 public:
-    BinaryTree(Token* root, Token newToken);
+    BinaryTree(Token* root);
     ~BinaryTree();
     
+    void addToken(Token* newToken);		// places new token in proper alphabetical location
     void treeIterate(Token* currentToken);		// keeps track of grandparent, parent, and children. Use get methods to grab data members
     void findAlpha(Token* currentToken);		// iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
     

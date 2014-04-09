@@ -84,6 +84,19 @@ void Token::addLineToList(int value)
     this->list->appendToList(value);
 }
 
+Token* Token::getLeftChild() {
+    return leftChild;
+}
+Token* Token::getRightChild() {
+    return rightChild;
+}
+void Token::setRightChild(Token* token) {
+    rightChild = token;
+}
+void Token::setLeftChild(Token* token) {
+    leftChild = token;
+}
+
 void Token::printList() {
     int printValue;
     IntegerNode* currentNode = list->getHead();	// first IntegerNode from list

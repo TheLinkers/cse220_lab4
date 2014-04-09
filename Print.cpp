@@ -123,9 +123,7 @@ void Print::printTree(Token* root, BinaryTree tree) {
     cout << tokenString << "\t\t";
     
     token->printList();		// need to print integerlist contents
-
-    
-    
+   
     while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
 	token = tree.next(token);				// grabs next token in the binaryTree
 	tokenString = token->getTokenString();

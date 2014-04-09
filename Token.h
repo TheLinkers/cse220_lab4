@@ -43,10 +43,11 @@ private:
     }
     literal;
     string tokenString;
-    Token *left;
-    Token *right;
-	//What variables and methods am I missing to implement a binary tree.
     
+    Token *grandparent;		// grandparent in binaryTree: set when added to tree structure
+    Token *parent;			// parent in binaryTree: set when added to binary tree
+    Token *leftChild;		// children in the binaryTree structure
+    Token *rightChild;
     IntegerList* list;		// forward declaration only allows declarations of pointers
     
     
@@ -65,8 +66,15 @@ public:
     string getStringLiteral();
     void setTokenString(string s);
     string getTokenString();
-    void setNextToken(Token *newToken);
-    Token* getNextToken();
+    
+    Token* getLeftChild();			// necessary methods for binaryTree organization
+    Token* getRightChild();
+    Token* getParent();
+    Token* getGrandparent();
+    void setRightChild(Token*);
+    void setLeftChild(Token*);
+    void setParent(Token*);
+    void setGrandparent(Token*);
     
     void addLineToList(int value);	// for adding current line number to a specified integerlist
     void printList();					// loops through integerList in Token and direcly couts the contents
