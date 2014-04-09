@@ -31,20 +31,48 @@ void BinaryTree::addToken(Token* newToken) {
     bool notYetHome = true;
     string tokenString = newToken->getTokenString();
     string leafString = root->getTokenString();
-
+    
+    /* Tree addition logic:
+     1. Start at root
+     2. Grab root string
+     3. Check IF token string is less or greater than root string
+     4. Move left or right, respectively 
+     5. If child doesn't exist in the spot, then fill it in (set newToken equal to the child)
+     6. Set notYetHome equal to false
+     7. Else navigate to that child and set the string equal to leafstring and check again
+     */
+    
+    
     while (notYetHome) {			// once token has been placed, set to false
 	if (tokenString < leafString) {
-		// move to left
-	    
+		// move to leftChild
+	    if (parent->getLeftChild() != NULL) {		// check to make sure that the left child exists
+		grandParent = parent;					// not sure if this means grandparent always points to parent, even if parent moves
+		parent = parent->getLeftChild();
+	    } else {
+		newToken = parent->getLeftChild();
+		parent->setLeftChild(newToken);
+		newToken->setParent(parent);
+		newToken->setGrandparent(grandParent);
+		notYetHome = false;
+	    }
 	    
 	} else if (tokenString > leafString) {
 		// move to right
-	} else {
-	    cout << "Tree addition error\n";
+	    if (parent->getRightChild() != NULL) {			// check to make sure that the right child exists
+		grandParent = parent;
+		parent = parent->getRightChild();
+	    } else {
+		newToken = parent->getRightChild();
+		parent->setRightChild(newToken);
+		newToken->setParent(parent);
+		newToken->setGrandparent(grandParent);
+		notYetHome = false;
+	    }
+	    
 	}
-    }
-    
-    
+	leafString = parent->getTokenString();
+    } 
 }
 
 
