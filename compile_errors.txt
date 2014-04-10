@@ -1,0 +1,167 @@
+In file included from IntegerList.h:18:0,
+                 from BinaryTree.h:18,
+                 from BinaryTree.cpp:13:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+In file included from BinaryTree.cpp:13:0:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from Token.h:22:0,
+                 from IntegerList.h:18,
+                 from IntegerList.cpp:13:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from IntegerList.h:18:0,
+                 from IntegerList.cpp:13:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+IntegerList.cpp: In destructor ‘IntegerList::~IntegerList()’:
+IntegerList.cpp:29:11: error: ‘free’ was not declared in this scope
+IntegerList.cpp: In member function ‘void IntegerList::appendToList(int)’:
+IntegerList.cpp:45:31: warning: NULL used in arithmetic [-Wpointer-arith]
+IntegerList.cpp: In member function ‘void IntegerList::appendToList(IntegerNode)’:
+IntegerList.cpp:55:31: warning: NULL used in arithmetic [-Wpointer-arith]
+In file included from Token.h:22:0,
+                 from IntegerNode.h:18,
+                 from IntegerNode.cpp:13:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from IntegerNode.h:18:0,
+                 from IntegerNode.cpp:13:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+In file included from Token.h:22:0,
+                 from Print.h:22,
+                 from main.cpp:19:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from Print.h:22:0,
+                 from main.cpp:19:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+In file included from main.cpp:20:0:
+Scanner.h:45:22: error: ISO C++ forbids initialization of member ‘line_ptr’ [-fpermissive]
+Scanner.h:45:22: error: making ‘line_ptr’ static [-fpermissive]
+Scanner.h:45:22: error: invalid in-class initialization of static data member of non-integral type ‘char*’
+In file included from Token.h:22:0,
+                 from Print.h:22,
+                 from Print.cpp:17:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from Print.h:22:0,
+                 from Print.cpp:17:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+In file included from Token.h:22:0,
+                 from Scanner.h:21,
+                 from Scanner.cpp:17:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from Scanner.h:21:0,
+                 from Scanner.cpp:17:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+In file included from Scanner.cpp:17:0:
+Scanner.h:45:22: error: ISO C++ forbids initialization of member ‘line_ptr’ [-fpermissive]
+Scanner.h:45:22: error: making ‘line_ptr’ static [-fpermissive]
+Scanner.h:45:22: error: invalid in-class initialization of static data member of non-integral type ‘char*’
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+Scanner.cpp: In member function ‘Token* Scanner::getToken()’:
+Scanner.cpp:99:9: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp:104:11: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘char Scanner::getChar(char*)’:
+Scanner.cpp:137:10: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp:150:11: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::skipBlanks(char*)’:
+Scanner.cpp:167:47: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::skipComment(char*)’:
+Scanner.cpp:182:15: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::getWord(char*, char*, Token*)’:
+Scanner.cpp:191:16: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::getNumber(char*, char*, Token*)’:
+Scanner.cpp:218:16: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp:273:38: error: ‘atoi’ was not declared in this scope
+Scanner.cpp:278:40: error: ‘atof’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::getString(char*, char*, Token*)’:
+Scanner.cpp:287:19: error: ‘line_ptr’ was not declared in this scope
+Scanner.cpp: In member function ‘void Scanner::getSpecial(char*, char*, Token*)’:
+Scanner.cpp:306:16: error: ‘line_ptr’ was not declared in this scope
+In file included from Token.h:22:0,
+                 from Token.cpp:17:
+BinaryTree.h:35:21: error: ISO C++ forbids initialization of member ‘seekLeft’ [-fpermissive]
+BinaryTree.h:35:21: error: making ‘seekLeft’ static [-fpermissive]
+BinaryTree.h:35:21: error: ISO C++ forbids in-class initialization of non-const static member ‘seekLeft’
+In file included from Token.cpp:17:0:
+Token.h:52:23: error: ISO C++ forbids initialization of member ‘leftCalled’ [-fpermissive]
+Token.h:52:23: error: making ‘leftCalled’ static [-fpermissive]
+Token.h:52:23: error: ISO C++ forbids in-class initialization of non-const static member ‘leftCalled’
+Token.h:53:24: error: ISO C++ forbids initialization of member ‘rightCalled’ [-fpermissive]
+Token.h:53:24: error: making ‘rightCalled’ static [-fpermissive]
+Token.h:53:24: error: ISO C++ forbids in-class initialization of non-const static member ‘rightCalled’
+Token.cpp: In member function ‘void Token::setLiteral(std::string)’:
+Token.cpp:67:86: error: ‘malloc’ was not declared in this scope
+
