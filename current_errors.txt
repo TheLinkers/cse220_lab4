@@ -39,15 +39,6 @@ Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char
 Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
 Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
 Scanner.cpp:36:1: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
-Scanner.cpp: In member function ‘Token* Scanner::getToken()’:
-Scanner.cpp:107:26: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-Scanner.cpp: In member function ‘void Scanner::getWord(char*, char*, Token*)’:
-Scanner.cpp:192:26: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-Scanner.cpp:192:56: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-Scanner.cpp: In member function ‘void Scanner::getNumber(char*, char*, Token*)’:
-Scanner.cpp:226:25: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-Scanner.cpp:248:33: warning: array subscript has type ‘char’ [-Wchar-subscripts]
-Scanner.cpp:266:29: warning: array subscript has type ‘char’ [-Wchar-subscripts]
 g++ -Wall -c -g Token.cpp
 g++ -Wall -g BinaryTree.o IntegerList.o IntegerNode.o main.o Print.o Scanner.o Token.o -o p1
 BinaryTree.o: In function `BinaryTree::addToken(Token*)':

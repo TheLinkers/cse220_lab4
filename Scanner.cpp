@@ -90,7 +90,7 @@ bool Scanner::getSourceLine(char source_buffer[])
 }
 Token* Scanner::getToken()
 {
-    char ch = '\0'; //This can be the current character you are examining during scanning.
+    unsigned char ch = '\0'; //This can be the current character you are examining during scanning.
     char token_string[MAX_TOKEN_STRING_LENGTH] = {'\0'}; //Store your token here as you build it.
     char *token_ptr = token_string; //write some code to point this to the beginning of token_string
     Token *new_token = new Token();
@@ -132,7 +132,7 @@ char Scanner::getChar(char source_buffer[])
      we should call get source line.  If at the EOF (end of file) we should
      set the character ch to EOF and leave the function.
      */
-    char ch;
+    unsigned char ch;
     
     if (*(this->line_ptr) == '\0')
 	{
@@ -175,7 +175,7 @@ void Scanner::skipComment(char source_buffer[])
      Write some code to skip past the comments in the program and return a pointer
      to the first non blank character.  Watch out for the EOF character.
      */
-    char ch;
+    unsigned char ch;
     
     do
 	{
@@ -188,7 +188,7 @@ void Scanner::getWord(char *str, char *token_ptr, Token *tok)
     /*
      Write some code to Extract the word
      */
-    char ch = *(this->line_ptr);
+    unsigned char ch = *(this->line_ptr);
     while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
 	{
         *token_ptr++ = (*(this->line_ptr))++;
@@ -215,7 +215,7 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
     /*
      Write some code to Extract the number and convert it to a literal number.
      */
-    char ch = *line_ptr;
+    unsigned char ch = *line_ptr;
     bool int_type = true;
     
     do
@@ -284,7 +284,7 @@ void Scanner::getString(char *str, char *token_ptr, Token *tok)
      Write some code to Extract the string
      */
     *token_ptr++ = '\'';
-    char ch = *(++(this->line_ptr));
+    unsigned char ch = *(++(this->line_ptr));
     while (ch != '\'')
 	{
         *token_ptr++ = ch;
@@ -303,7 +303,7 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
      Write some code to Extract the special token.  Most are single-character
      some are double-character.  Set the token appropriately.
      */
-    char ch = *(this->line_ptr);
+    unsigned char ch = *(this->line_ptr);
     *token_ptr = ch;
     
     switch (ch)
