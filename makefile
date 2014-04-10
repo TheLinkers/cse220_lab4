@@ -18,7 +18,7 @@ CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG)
 
 CrossReference : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o p1
+	$(CC) $(LFLAGS) $(OBJS) -o CrossReference
 
 main.o : main.cpp common.h Print.h Scanner.h Token.h
 	$(CC) $(CFLAGS) main.cpp
