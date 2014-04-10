@@ -96,12 +96,12 @@ Token* Scanner::getToken()
     Token *new_token = new Token();
     
 	//1.  Skip past all of the blanks
-    if (line_ptr == NULL)
+    if (this->line_ptr == NULL)
 	{
-        line_ptr = source_line;
+        this->line_ptr = source_line;
 	}
     skipBlanks(source_line);
-    ch = *line_ptr;
+    ch = *(this->line_ptr);
     
 	//2.  figure out which case you are dealing with LETTER, DIGIT, QUOTE, EOF, or special, by examining ch
     switch (char_table[ch])
@@ -134,20 +134,20 @@ char Scanner::getChar(char source_buffer[])
      */
     char ch;
     
-    if (*line_ptr == '\0')
+    if (*(this->line_ptr) == '\0')
 	{
         if (!getSourceLine(source_buffer))
 	    {
             ch = EOF_CHAR;
             return ch;
 	    }
-        line_ptr = source_buffer;
+        this->line_ptr = source_buffer;
 	}
     
     /*
      Write some code to set the character ch to the next character in the buffer
      */
-    ch = *line_ptr;
+    ch = *(this->line_ptr);
     if ((ch == '\n') || (ch == '\t') || (ch == '\r'))
 	{
         ch = ' ';
@@ -164,9 +164,9 @@ void Scanner::skipBlanks(char source_buffer[])
      Write some code to skip past the blanks in the program and return a pointer
      to the first non blank character
      */
-    while (getChar(source_buffer) == ' ' && (*line_ptr != EOF_CHAR))
+    while (getChar(source_buffer) == ' ' && (*(this->line_ptr) != EOF_CHAR))
 	{
-        line_ptr++;
+        this->line_ptr++;
 	}
 }
 void Scanner::skipComment(char source_buffer[])
@@ -179,7 +179,7 @@ void Scanner::skipComment(char source_buffer[])
     
     do
 	{
-        ch = *line_ptr++;
+        ch = (*(this->line_ptr))++;
 	}
     while ((ch != '}') && (ch != EOF_CHAR));
 }
@@ -188,11 +188,11 @@ void Scanner::getWord(char *str, char *token_ptr, Token *tok)
     /*
      Write some code to Extract the word
      */
-    char ch = *line_ptr;
+    char ch = *(this->line_ptr);
     while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
 	{
-        *token_ptr++ = *line_ptr++;
-        ch = *line_ptr;
+        *token_ptr++ = (*(this->line_ptr))++;
+        ch = *(this->line_ptr);
 	}
     *token_ptr = '\0';
     
@@ -221,19 +221,19 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
     do
 	{
         *(token_ptr++) = ch;
-        ch = *(++line_ptr);
+        ch = *(++(this->line_ptr));
 	}
     while (char_table[ch] == DIGIT);
     
     if (ch == '.')
 	{
 	    //Then we might have a dot or dotdot
-        ch = *(++line_ptr);
+        ch = *(++(this->line_ptr));
         if (ch == '.')
 	    {
 		//We have a dotdot, back up ptr and our number is an int.
             int_type = true;
-            --line_ptr;
+            --(this->line_ptr);
 	    }
         else
 	    {
@@ -243,7 +243,7 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
             do
 		{
                 *(token_ptr++) = ch;
-                ch = *(line_ptr++);
+                ch = *((this->line_ptr)++);
 		}
             while (char_table[ch] == DIGIT);
 	    }
@@ -252,16 +252,16 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
 	{
         int_type = false;
         *(token_ptr++) = ch;
-        ch = *(++line_ptr);
+        ch = *(++(this->line_ptr));
         if (ch == '+' || ch == '-')
 	    {
             *(token_ptr++) = ch;
-            ch = *(++line_ptr);
+            ch = *(++(this->line_ptr));
 	    }
         do
 	    {
             *(token_ptr++) = ch;
-            ch = *(++line_ptr);
+            ch = *(++(this->line_ptr));
 	    }
         while (char_table[ch] == DIGIT);
 	}
@@ -270,7 +270,7 @@ void Scanner::getNumber(char *str, char *token_ptr, Token *tok)
     if (int_type)
 	{
         tok->setType(INTEGER_LIT);
-        tok->setLiteral((int)atoi(str));
+        tok->setLiteral(atoi(str));
 	}
     else
 	{
@@ -284,13 +284,13 @@ void Scanner::getString(char *str, char *token_ptr, Token *tok)
      Write some code to Extract the string
      */
     *token_ptr++ = '\'';
-    char ch = *(++line_ptr);
+    char ch = *(++(this->line_ptr));
     while (ch != '\'')
 	{
         *token_ptr++ = ch;
-        ch = *(++line_ptr);
+        ch = *(++(this->line_ptr));
 	}
-    *token_ptr++ = *line_ptr++;
+    *token_ptr++ = *(this->line_ptr)++;
     *token_ptr = '\0';
     tok->setCode(STRING);
     tok->setType(STRING_LIT);
@@ -303,7 +303,7 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
      Write some code to Extract the special token.  Most are single-character
      some are double-character.  Set the token appropriately.
      */
-    char ch = *line_ptr;
+    char ch = *(this->line_ptr);
     *token_ptr = ch;
     
     switch (ch)
@@ -311,72 +311,72 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
         case '^':
 	tok->setCode(UPARROW);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '*':
 	tok->setCode(STAR);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '(':
 	tok->setCode(LPAREN);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case ')':
 	tok->setCode(RPAREN);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '-':
 	tok->setCode(MINUS);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '+':
 	tok->setCode(PLUS);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '=':
 	tok->setCode(EQUAL);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '[':
 	tok->setCode(LBRACKET);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case ']':
 	tok->setCode(RBRACKET);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case ';':
 	tok->setCode(SEMICOLON);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case ',':
 	tok->setCode(COMMA);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case '/':
 	tok->setCode(SLASH);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
         case ':':
 	token_ptr++;
-	ch = *(++line_ptr);
+	ch = *(++(this->line_ptr));
 	if (ch == '=')
             {
 	    *token_ptr = '=';
 	    tok->setCode(COLONEQUAL);
 	    token_ptr++;
-	    line_ptr++;
+	    this->line_ptr++;
             }
 	else
             {
@@ -385,20 +385,20 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
 	break;
         case '<':
 	token_ptr++;
-	ch = *(++line_ptr);
+	ch = *(++(this->line_ptr));
 	if (ch == '=')
             {
 	    *token_ptr = '=';
 	    tok->setCode(LE);
 	    token_ptr++;
-	    line_ptr++;
+	    this->line_ptr++;
             }
 	else if (ch == '>')
             {
 	    *token_ptr = '>';
 	    tok->setCode(NE);
 	    token_ptr++;
-	    line_ptr++;
+	    this->line_ptr++;
             }
 	else
             {
@@ -407,13 +407,13 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
 	break;
         case '>':
 	token_ptr++;
-	ch = *(++line_ptr);
+	ch = *(++(this->line_ptr));
 	if (ch == '=')
             {
 	    *token_ptr = '=';
 	    tok->setCode(GE);
 	    token_ptr++;
-	    line_ptr++;
+	    this->line_ptr++;
             }
 	else
             {
@@ -422,13 +422,13 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
 	break;
         case '.':
 	token_ptr++;
-	ch = *(++line_ptr);
+	ch = *(++(this->line_ptr));
 	if (ch == '=')
             {
 	    *token_ptr = '.';
 	    tok->setCode(DOTDOT);
 	    token_ptr++;
-	    line_ptr++;
+	    this->line_ptr++;
             }
 	else
             {
@@ -438,7 +438,7 @@ void Scanner::getSpecial(char *str, char *token_ptr, Token *tok)
         default:
 	tok->setCode(ERROR);
 	token_ptr++;
-	line_ptr++;
+	this->line_ptr++;
 	break;
     }
     *token_ptr = '\0';
@@ -449,7 +449,7 @@ void Scanner::downshiftWord(char word[])
     /*
      Make all of the characters in the incoming word lower case.
      */
-    int index;
+    unsigned int index;
     
     for (index = 0; index < strlen(word); index++)
 	{

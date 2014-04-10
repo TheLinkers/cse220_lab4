@@ -49,8 +49,8 @@ private:
     Token *leftChild;		// children in the binaryTree structure
     Token *rightChild;
     IntegerList* list;		// forward declaration only allows declarations of pointers
-    bool leftCalled = false;
-    bool rightCalled = true;
+    bool leftCalled;
+    bool rightCalled;
     
 public:
     Token();

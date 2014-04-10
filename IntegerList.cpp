@@ -13,21 +13,23 @@
 #include "IntegerList.h"
 
 IntegerList::IntegerList(int value) {
-    this->appendToList(value);
+    *tail = IntegerNode(value, this->tail);
     this->head = this->tail;
+	this->numberOfNodes = 1;
 }
 
 IntegerList::IntegerList(IntegerNode node) {
-    this->appendToList(node);
+    this->tail = &node;
     this->head = this->tail;
+	this->numberOfNodes = 1;
 }
 
 IntegerList::~IntegerList() {
     IntegerNode *temp = this->head;
     while (this->head != NULL){
-	temp = head->getNext();
-	free(head);
-	this->head = temp;
+		temp = head->getNext();
+		delete head;
+		this->head = temp;
     }
 }
 
@@ -42,20 +44,10 @@ IntegerNode* IntegerList::getTail() {
 
 void IntegerList::appendToList(int value) {
     *tail = IntegerNode(value, this->tail);
-    if(this->numberOfNodes == NULL) {		// not sure what is going on here: warning thrown
-	numberOfNodes = 1;
-    }
-    else{
 	++numberOfNodes;
-    }
 }
 
 void IntegerList::appendToList(IntegerNode node) {
     this->tail = &node;
-    if(this->numberOfNodes == NULL) {		// not sure what is going on here: warning thrown
-	numberOfNodes = 1;
-    }
-    else{
 	++numberOfNodes;
-    }
 }

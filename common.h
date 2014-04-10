@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <string.h>
 #include <time.h>
+#include <stdlib.h>
 
 #define FORM_FEED_CHAR          '\f'
 #define EOF_CHAR                '\x7f'

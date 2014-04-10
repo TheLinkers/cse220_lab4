@@ -26,6 +26,7 @@ BinaryTree::~BinaryTree() {
     // adding methods: need to compare strings of tokens
     // stores values of family tokens into tokens as they go: just create each family member as temporary token pointers in method
 void BinaryTree::addToken(Token* newToken) {
+	seekLeft = true;
     Token* grandParent = root;
     Token* parent = root;
     bool notYetHome = true;

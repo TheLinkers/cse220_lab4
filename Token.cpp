@@ -22,6 +22,8 @@ Token::Token()
 {
     leftChild = NULL;
     rightChild = NULL;
+	leftCalled = false;
+	rightCalled = true;
 	//What code do I need here to initialize everything.
 }
 Token::~Token()
@@ -64,7 +66,7 @@ float Token::getRealLiteral()
 }
 void Token::setLiteral(string newString)
 {
-    this->literal.stringLiteral = (char*)malloc(sizeof(char) * newString.length() + 1);
+	this->literal.stringLiteral = (char*)malloc(sizeof(char) * newString.length() + 1);
     strcpy(this->literal.stringLiteral, newString.c_str());
 }
 string Token::getStringLiteral()

@@ -32,7 +32,7 @@ private:
     Token* leftChild;
     Token* rightChild;
     Token* currentToken;
-    bool seekLeft = true;		// used in list iterate, defines whether should take findAlpha or the parent as the next alphabetical token
+    bool seekLeft;		// used in list iterate, defines whether should take findAlpha or the parent as the next alphabetical token
     
 public:
     BinaryTree(Token* root);
