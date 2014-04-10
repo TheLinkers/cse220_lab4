@@ -11,21 +11,48 @@ For bug reporting instructions, please see:
 Reading symbols from /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference...done.
 (gdb) b 52
 Breakpoint 1 at 0x401b72: file main.cpp, line 52.
-(gdb) start
-Temporary breakpoint 2 at 0x401a4f: file main.cpp, line 30.
-Starting program: /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference 
+(gdb) r n
+Starting program: /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference n
 
-Temporary breakpoint 2, main (argc=1, argv=0x7fffffffe7a8) at main.cpp:30
-30	{
+Page    1  n  Thu Apr 10 01:01:56 2014
+
+
+   1: PROGRAM newton (input, output);
+    >> <IDENTIFIER>     pqrstuvwxyz
+
+Breakpoint 1, main (argc=2, argv=0x7fffffffe7a8) at main.cpp:52
+52		    tree->addToken(token);
 (gdb) step
-36	    Token *token = NULL;		// not sure if this may throw errors or not: how to properly allocate in memory? need to keep root of binaryTree in mind
+BinaryTree::addToken (this=0x607360, newToken=0x6073a0) at BinaryTree.cpp:29
+29	    this->seekLeft = true;
 (gdb) 
-39	    FILE *source_file = init_lister(argv[1], source_name, date);
+30	    Token* grandParent = root;
 (gdb) 
-init_lister (name=0x0, source_file_name=0x7fffffffe630 "\230b`", dte=0x7fffffffe680 "\a") at main.cpp:72
-72	    strcpy(source_file_name, name);
+31	    Token* parent = root;
+(gdb) 
+32	    bool notYetHome = true;
+(gdb) 
+33	    string tokenString = newToken->getTokenString();
+(gdb) 
+Token::getTokenString (this=0x6073a0) at Token.cpp:83
+83	    return this->tokenString;
+(gdb) 
+84	}
+(gdb) 
+BinaryTree::addToken (this=0x607360, newToken=0x6073a0) at BinaryTree.cpp:34
+34	    string leafString = root->getTokenString();
+(gdb) 
+Token::getTokenString (this=0x0) at Token.cpp:83
+83	    return this->tokenString;
 (gdb) 
 
 Program received signal SIGSEGV, Segmentation fault.
-0x00007ffff759b207 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+0x00007ffff7b79f28 in std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+(gdb) 
+Single stepping until exit from function _ZNSsC2ERKSs,
+which has no line number information.
+
+Program terminated with signal SIGSEGV, Segmentation fault.
+The program no longer exists.
+
 
