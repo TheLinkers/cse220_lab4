@@ -124,6 +124,20 @@ Token* BinaryTree::treeIterate(Token* currentToken) {
     return returnToken;
 }
 
+bool BinaryTree::isNotDone(Token *root) {
+    Token* checkToken = root;
+    bool isNotFinished = true;
+    while (checkToken->getRightChild() != NULL) {
+	    // statement navigates to far right child (end of list) to see if called
+	checkToken = checkToken->getRightChild();
+    }
+    if (checkToken->hasRightCalled() == true) {
+	isNotFinished = false;
+	    // returns false if far right child has been called, meaning that the end of the alphabet has been reached
+    }
+    
+    return isNotFinished;
+}
 
     // keeps track of grandparent, parent, and children. Use get methods to grab data members
 Token* BinaryTree::findAlpha(Token* currentToken) {

@@ -93,11 +93,35 @@ Token* Token::getLeftChild() {
 Token* Token::getRightChild() {
     return rightChild;
 }
+Token* Token::getGrandparent() {
+    return grandparent;
+}
+Token* Token::getParent() {
+    return parent;
+}
 void Token::setRightChild(Token* token) {
     rightChild = token;
 }
 void Token::setLeftChild(Token* token) {
     leftChild = token;
+}
+void Token::setParent(Token* token) {
+    parent = token;
+}
+void Token::setGrandparent(Token* token) {
+    grandparent = token;
+}
+bool Token::hasRightCalled() {
+    return rightCalled;
+}
+void Token::setRightCalled(bool rightCalled) {
+    this->rightCalled = rightCalled;
+}
+bool Token::hasLeftCalled(){
+    return rightCalled;
+}
+void Token::setLeftCalled(bool leftCalled){
+        this->leftCalled = leftCalled;
 }
 
 void Token::printList() {

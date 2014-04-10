@@ -20,7 +20,6 @@
 #include <iostream>
 #include "common.h"
 #include "Token.h"
-#include "BinaryTree.h"
 
 using namespace std;
 

@@ -16,8 +16,8 @@
 
 #include "Print.h"
 #include "Token.h"
-#include "BinaryTree.h"
 #include "IntegerList.h"
+
 
 const char* const SYMBOL_STRINGS[] =
 {
@@ -118,14 +118,14 @@ void Print::printTree(Token* root, BinaryTree tree) {
      8. Continue until BinaryTree is completed (NULL)
      */
     
-    token = tree.getFirstToken();
+    token = tree.findAlpha(root);
     tokenString = token->getTokenString();
     cout << tokenString << "\t\t";
     
     token->printList();		// need to print integerlist contents
    
     while (tree.isNotDone(token)) {			// checks boolean for whether end of binaryTree has been reached
-	token = tree.next(token);				// grabs next token in the binaryTree
+	token = tree.treeIterate(token);				// grabs next token in the binaryTree
 	tokenString = token->getTokenString();
 	cout << tokenString << "\t\t";
 	

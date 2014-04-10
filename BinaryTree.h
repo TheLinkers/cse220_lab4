@@ -17,6 +17,7 @@
 #include "common.h"
 #include "IntegerList.h"
 #include "IntegerNode.h"
+#include "Token.h"
 
 
 using namespace std;
@@ -48,7 +49,6 @@ public:
     Token* getRightChild(Token* currentToken);
     Token* getLeftChild(Token* currentToken);
     Token* getCurrentToken();
-    Token* next(Token* currentToken);			// needs to change the parent/family fields
     bool isNotDone(Token* currentToken);		// boolean returns false only when all members of the tree have been used
     void addRightChild(Token* currentToken);
     void addLeftChild(Token* currentToken);
