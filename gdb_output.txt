@@ -1,0 +1,31 @@
+ gdb ./CrossReference
+GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
+Copyright (C) 2012 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+For bug reporting instructions, please see:
+<http://bugs.launchpad.net/gdb-linaro/>...
+Reading symbols from /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference...done.
+(gdb) b 52
+Breakpoint 1 at 0x401b72: file main.cpp, line 52.
+(gdb) start
+Temporary breakpoint 2 at 0x401a4f: file main.cpp, line 30.
+Starting program: /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference 
+
+Temporary breakpoint 2, main (argc=1, argv=0x7fffffffe7a8) at main.cpp:30
+30	{
+(gdb) step
+36	    Token *token = NULL;		// not sure if this may throw errors or not: how to properly allocate in memory? need to keep root of binaryTree in mind
+(gdb) 
+39	    FILE *source_file = init_lister(argv[1], source_name, date);
+(gdb) 
+init_lister (name=0x0, source_file_name=0x7fffffffe630 "\230b`", dte=0x7fffffffe680 "\a") at main.cpp:72
+72	    strcpy(source_file_name, name);
+(gdb) 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff759b207 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+
