@@ -64,7 +64,7 @@ Scanner::Scanner(FILE *source_file, char source_name[], char date[], Print print
 	}
     char_table['\''] = QUOTE;
     char_table[EOF_CHAR] = EOF_CODE;
-    
+    this->line_ptr = NULL;
     line_number = 0;
     source_line[0] = '\0';
 }
