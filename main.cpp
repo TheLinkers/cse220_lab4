@@ -39,7 +39,9 @@ int main(int argc, const char * argv[])
     FILE *source_file = init_lister(argv[1], source_name, date);
     Print print(source_name, date);
     Scanner scanner(source_file, source_name, date, print);
-    BinaryTree *tree = new BinaryTree(token);					// not sure how to properly initialize/set the root of the tree
+    int identifierCount = 0;
+    
+    BinaryTree *tree;					// not sure how to properly initialize/set the root of the tree
     
     do
 	{
@@ -49,6 +51,10 @@ int main(int argc, const char * argv[])
 	    // BinaryTree stuff goes here
 	    // If token is IDENTIFIER type, sends token pointer to tree to check if it exists
 	if (token->getCode() == IDENTIFIER) {
+	    identifierCount++;
+	    if (identifierCount == 1) {
+		tree = new BinaryTree(token);
+	    }
 	    tree->addToken(token);
 	}
 	
