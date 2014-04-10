@@ -22,8 +22,9 @@ Token::Token()
 {
     leftChild = NULL;
     rightChild = NULL;
-	leftCalled = false;
-	rightCalled = true;
+    leftCalled = false;
+    rightCalled = false;
+    
 	//What code do I need here to initialize everything.
 }
 Token::~Token()
