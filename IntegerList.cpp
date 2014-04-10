@@ -26,7 +26,7 @@ IntegerList::~IntegerList() {
     IntegerNode *temp = this->head;
     while (this->head != NULL){
 	temp = head->getNext();
-	free(head);
+	delete head;
 	this->head = temp;
     }
 }
