@@ -53,7 +53,7 @@ private:
     bool rightCalled;
     
 public:
-    Token();
+    Token(int num);
     ~Token();
     void setCode(TokenCode newCode);
     TokenCode getCode();
@@ -67,6 +67,7 @@ public:
     string getStringLiteral();
     void setTokenString(string s);
     string getTokenString();
+	int getFirstOccurrence();
     
     Token* getLeftChild();			// necessary methods for binaryTree organization
     Token* getRightChild();

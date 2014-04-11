@@ -20,7 +20,7 @@ BinaryTree::BinaryTree(Token* root) {
     this->root = root;
 }
 BinaryTree::~BinaryTree() {
-    
+	delete this->root;
 }
 
     // adding methods: need to compare strings of tokens
@@ -52,7 +52,6 @@ void BinaryTree::addToken(Token* newToken) {
 		grandParent = parent;					// not sure if this means grandparent always points to parent, even if parent moves
 		parent = parent->getLeftChild();
 	    } else {
-		newToken = parent->getLeftChild();
 		parent->setLeftChild(newToken);
 		newToken->setParent(parent);
 		newToken->setGrandparent(grandParent);
@@ -65,7 +64,6 @@ void BinaryTree::addToken(Token* newToken) {
 		grandParent = parent;
 		parent = parent->getRightChild();
 	    } else {
-		newToken = parent->getRightChild();
 		parent->setRightChild(newToken);
 		newToken->setParent(parent);
 		newToken->setGrandparent(grandParent);
@@ -73,11 +71,18 @@ void BinaryTree::addToken(Token* newToken) {
 	    }
 	    
 	}
+	else{ //newToken = currentToken
+		parent->addLineToList(newToken->getFirstOccurrence());
+		delete newToken;
+		notYetHome = false;
+	}
 	leafString = parent->getTokenString();
     }
 }
 
-
+Token* BinaryTree::getFirstToken(){
+	return this->root;
+}
 
     // sifting methods
 Token* BinaryTree::treeIterate(Token* currentToken) {
@@ -150,3 +155,16 @@ Token* BinaryTree::findAlpha(Token* currentToken) {
     return treePointer;
     
 } // iterates through to find the top of the list (far leftChild [look for non-NULL nextLeftChild])
+
+/*void recursiveDelete(Token** node){
+	Token* current = *node;
+	if(current->getLeftChild() != NULL){
+		recursiveDelete(*(current->getLeftChild()));
+	}
+	
+	if(current->getRightChild() != NULL){
+		recursiveDelete(*(current->getRightChild()));
+	}
+	delete current;
+	*node = NULL;
+}*/

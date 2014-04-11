@@ -18,20 +18,21 @@
 #include "BinaryTree.h"
 #include "IntegerList.h"
 
-Token::Token()
+Token::Token(int num)
 {
-    leftChild = NULL;
-    rightChild = NULL;
-    leftCalled = false;
-    rightCalled = false;
-    
+    this->leftChild = NULL;
+    this->rightChild = NULL;
+    this->leftCalled = false;
+    this->rightCalled = false;
+    this->list = new IntegerList(num);
 	//What code do I need here to initialize everything.
 }
 Token::~Token()
 {
 	//What code do I need here to free memory
-    
-    
+	delete this->list;
+	delete this->leftChild;
+    delete this->rightChild;
 }
 void Token::setCode(TokenCode newCode)
 {
@@ -81,6 +82,10 @@ void Token::setTokenString(string s)
 string Token::getTokenString()
 {
     return this->tokenString;
+}
+int Token::getFirstOccurrence()
+{
+    return (this->list->getHead())->getValue();
 }
 void Token::addLineToList(int value)
 {

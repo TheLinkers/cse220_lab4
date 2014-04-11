@@ -1,0 +1,46 @@
+Page    1  n  Thu Apr 10 19:11:34 2014
+
+
+   1: PROGRAM newton (input, output);
+    >> PROGRAM          program
+*** glibc detected *** ./CrossReference: free(): invalid pointer: 0x00007f5f2f53a778 ***
+======= Backtrace: =========
+/lib/x86_64-linux-gnu/libc.so.6(+0x7eb96)[0x7f5f2f1ffb96]
+./CrossReference[0x401847]
+./CrossReference[0x403906]
+./CrossReference[0x401c57]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0xed)[0x7f5f2f1a276d]
+./CrossReference[0x4010c9]
+======= Memory map: ========
+00400000-00406000 r-xp 00000000 08:05 7868535                            /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference
+00605000-00606000 r--p 00005000 08:05 7868535                            /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference
+00606000-00607000 rw-p 00006000 08:05 7868535                            /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference
+02190000-021b1000 rw-p 00000000 00:00 0                                  [heap]
+7f5f2ee85000-7f5f2ef80000 r-xp 00000000 08:05 50335412                   /lib/x86_64-linux-gnu/libm-2.15.so
+7f5f2ef80000-7f5f2f17f000 ---p 000fb000 08:05 50335412                   /lib/x86_64-linux-gnu/libm-2.15.so
+7f5f2f17f000-7f5f2f180000 r--p 000fa000 08:05 50335412                   /lib/x86_64-linux-gnu/libm-2.15.so
+7f5f2f180000-7f5f2f181000 rw-p 000fb000 08:05 50335412                   /lib/x86_64-linux-gnu/libm-2.15.so
+7f5f2f181000-7f5f2f336000 r-xp 00000000 08:05 50335231                   /lib/x86_64-linux-gnu/libc-2.15.so
+7f5f2f336000-7f5f2f536000 ---p 001b5000 08:05 50335231                   /lib/x86_64-linux-gnu/libc-2.15.so
+7f5f2f536000-7f5f2f53a000 r--p 001b5000 08:05 50335231                   /lib/x86_64-linux-gnu/libc-2.15.so
+7f5f2f53a000-7f5f2f53c000 rw-p 001b9000 08:05 50335231                   /lib/x86_64-linux-gnu/libc-2.15.so
+7f5f2f53c000-7f5f2f541000 rw-p 00000000 00:00 0 
+7f5f2f541000-7f5f2f556000 r-xp 00000000 08:05 50335230                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f2f556000-7f5f2f755000 ---p 00015000 08:05 50335230                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f2f755000-7f5f2f756000 r--p 00014000 08:05 50335230                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f2f756000-7f5f2f757000 rw-p 00015000 08:05 50335230                   /lib/x86_64-linux-gnu/libgcc_s.so.1
+7f5f2f757000-7f5f2f839000 r-xp 00000000 08:05 17571717                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.16
+7f5f2f839000-7f5f2fa38000 ---p 000e2000 08:05 17571717                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.16
+7f5f2fa38000-7f5f2fa40000 r--p 000e1000 08:05 17571717                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.16
+7f5f2fa40000-7f5f2fa42000 rw-p 000e9000 08:05 17571717                   /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.16
+7f5f2fa42000-7f5f2fa57000 rw-p 00000000 00:00 0 
+7f5f2fa57000-7f5f2fa79000 r-xp 00000000 08:05 50335413                   /lib/x86_64-linux-gnu/ld-2.15.so
+7f5f2fc59000-7f5f2fc5e000 rw-p 00000000 00:00 0 
+7f5f2fc74000-7f5f2fc79000 rw-p 00000000 00:00 0 
+7f5f2fc79000-7f5f2fc7a000 r--p 00022000 08:05 50335413                   /lib/x86_64-linux-gnu/ld-2.15.so
+7f5f2fc7a000-7f5f2fc7c000 rw-p 00023000 08:05 50335413                   /lib/x86_64-linux-gnu/ld-2.15.so
+7fff5af65000-7fff5af86000 rw-p 00000000 00:00 0                          [stack]
+7fff5afff000-7fff5b000000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+Aborted
+
