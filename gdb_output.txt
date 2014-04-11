@@ -1,4 +1,4 @@
- gdb ./CrossReference
+gdb ./CrossReference
 GNU gdb (Ubuntu/Linaro 7.4-2012.04-0ubuntu2.1) 7.4-2012.04
 Copyright (C) 2012 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -9,50 +9,388 @@ This GDB was configured as "x86_64-linux-gnu".
 For bug reporting instructions, please see:
 <http://bugs.launchpad.net/gdb-linaro/>...
 Reading symbols from /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference...done.
-(gdb) b 52
-Breakpoint 1 at 0x401b72: file main.cpp, line 52.
+(gdb) b 43
+Breakpoint 1 at 0x401b90: file main.cpp, line 43.
+(gdb) rn
+Target exec does not support this command.
 (gdb) r n
 Starting program: /home/dmart/Documents/CSE_220/cse220_lab4/CrossReference n
 
-Page    1  n  Thu Apr 10 01:01:56 2014
+Breakpoint 1, main (argc=2, argv=0x7fffffffe7a8) at main.cpp:43
+43		BinaryTree tree = BinaryTree();					// not sure how to properly initialize/set the root of the tree
+(gdb) step
+BinaryTree::BinaryTree (this=0x7fffffffe010) at BinaryTree.cpp:20
+20	    this->root = NULL;
+(gdb) 
+21	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:47
+47	        token = scanner.getToken();
+(gdb) 
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:92
+92	{
+(gdb) 
+93	    unsigned char ch = '\0'; //This can be the current character you are examining during scanning.
+(gdb) 
+94	    char token_string[MAX_TOKEN_STRING_LENGTH] = {'\0'}; //Store your token here as you build it.
+(gdb) 
+95	    char *token_ptr = token_string; //write some code to point this to the beginning of token_string
+(gdb) 
+96	    Token *new_token = new Token(line_number);
+(gdb) 
+Token::Token (this=0x607360, num=0) at Token.cpp:21
+21	Token::Token(int num)
+(gdb) 
+23	    this->leftChild = NULL;
+(gdb) 
+24	    this->rightChild = NULL;
+(gdb) 
+25	    this->leftCalled = false;
+(gdb) finish
+Run till exit from #0  Token::Token (this=0x607360, num=0) at Token.cpp:25
+0x0000000000402793 in Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:96
+96	    Token *new_token = new Token(line_number);
+(gdb) step
+99	    if (this->line_ptr == NULL)
+(gdb) 
+101	        this->line_ptr = source_line;
+(gdb) finish
+Run till exit from #0  Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:101
+
+Page    1  n  Thu Apr 10 19:36:55 2014
 
 
    1: PROGRAM newton (input, output);
-    >> <IDENTIFIER>     pqrstuvwxyz
-
-Breakpoint 1, main (argc=2, argv=0x7fffffffe7a8) at main.cpp:52
-52		    tree->addToken(token);
+0x0000000000401bae in main (argc=2, argv=0x7fffffffe7a8) at main.cpp:47
+47	        token = scanner.getToken();
+Value returned is $1 = (Token *) 0x607360
 (gdb) step
-BinaryTree::addToken (this=0x607360, newToken=0x6073a0) at BinaryTree.cpp:29
-29	    this->seekLeft = true;
+48	        print.printToken(token);
 (gdb) 
-30	    Token* grandParent = root;
+Print::printToken (this=0x7fffffffe050, token=0x607360) at Print.cpp:77
+77	{
 (gdb) 
-31	    Token* parent = root;
+79	    const char *symbol_string = SYMBOL_STRINGS[token->getCode()];
 (gdb) 
-32	    bool notYetHome = true;
+Token::getCode (this=0x607360) at Token.cpp:43
+43	    return this->code;
 (gdb) 
-33	    string tokenString = newToken->getTokenString();
+44	}
 (gdb) 
-Token::getTokenString (this=0x6073a0) at Token.cpp:83
-83	    return this->tokenString;
+Print::printToken (this=0x7fffffffe050, token=0x607360) at Print.cpp:81
+81	    switch (token->getCode())
 (gdb) 
-84	}
+Token::getCode (this=0x607360) at Token.cpp:43
+43	    return this->code;
 (gdb) 
-BinaryTree::addToken (this=0x607360, newToken=0x6073a0) at BinaryTree.cpp:34
-34	    string leafString = root->getTokenString();
+44	}
 (gdb) 
-Token::getTokenString (this=0x0) at Token.cpp:83
-83	    return this->tokenString;
+Print::printToken (this=0x7fffffffe050, token=0x607360) at Print.cpp:97
+97		sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getTokenString().c_str());
+(gdb) 
+Token::getTokenString (this=0x607360) at Token.cpp:84
+84	    return this->tokenString;
+(gdb) 
+85	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607360) at Print.cpp:98
+98		break;
+(gdb) 
+100	    printLine(line);
+(gdb) 
+Print::printLine (this=0x7fffffffe050, line=0x7fffffffdeb0 "    >> PROGRAM          program\n") at Print.cpp:47
+47	    char save_ch = '\0';
+(gdb) 
+48	    char *save_chp = NULL;
+(gdb) 
+51	    if (++line_count > MAX_LINES_PER_PAGE)
+(gdb) 
+56	    if (strlen(line) > MAX_PRINT_LINE_LENGTH)
+(gdb) 
+60	    if (save_chp)
+(gdb) 
+65	    printf("%s", line);
+(gdb) 
+    >> PROGRAM          program
+66	    if (save_chp)
+(gdb) 
+70	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607360) at Print.cpp:101
+101	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:52
+52			if (token->getCode() == IDENTIFIER) {
+(gdb) 
+Token::getCode (this=0x607360) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:60
+60		}while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
+(gdb) 
+Token::getCode (this=0x607360) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:45
+45	    do
+(gdb) 
+60		}while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
+(gdb) 
+Token::getCode (this=0x607360) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:45
+45	    do
+(gdb) 
+47	        token = scanner.getToken();
+(gdb) 
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:92
+92	{
+(gdb) 
+93	    unsigned char ch = '\0'; //This can be the current character you are examining during scanning.
+(gdb) 
+94	    char token_string[MAX_TOKEN_STRING_LENGTH] = {'\0'}; //Store your token here as you build it.
+(gdb) 
+95	    char *token_ptr = token_string; //write some code to point this to the beginning of token_string
+(gdb) 
+96	    Token *new_token = new Token(line_number);
+(gdb) 
+Token::Token (this=0x607400, num=1) at Token.cpp:21
+21	Token::Token(int num)
+(gdb) 
+23	    this->leftChild = NULL;
+(gdb) 
+24	    this->rightChild = NULL;
+(gdb) 
+25	    this->leftCalled = false;
+(gdb) 
+26	    this->rightCalled = false;
+(gdb) 
+27	    this->list = new IntegerList(num);
+(gdb) 
+IntegerList::IntegerList (this=0x607450, value=1) at IntegerList.cpp:16
+16	    *tail = IntegerNode(value, this->tail);
+(gdb) 
+IntegerNode::IntegerNode (this=0x7fffffffde30, value=1, previous=0x7ffff78bd778) at IntegerNode.cpp:16
+16	    this->value = value;
+(gdb) 
+17	    this->previous = previous;
+(gdb) 
+18	}
+(gdb) 
+IntegerNode::~IntegerNode (this=0x7fffffffde30, __in_chrg=<optimized out>) at IntegerNode.cpp:21
+21	    this->previous = NULL;
+(gdb) 
+22	    this->next = NULL;
+(gdb) 
+23	}
+(gdb) 
+IntegerList::IntegerList (this=0x607450, value=1) at IntegerList.cpp:17
+17	    this->head = this->tail;
+(gdb) 
+18		this->numberOfNodes = 1;
+(gdb) 
+19	}
+(gdb) 
+Token::Token (this=0x607400, num=1) at Token.cpp:29
+29	}
+(gdb) 
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:99
+99	    if (this->line_ptr == NULL)
+(gdb) 
+103	    skipBlanks(source_line);
+(gdb) 
+Scanner::skipBlanks (this=0x7fffffffe0a0, source_buffer=0x7fffffffe520 "PROGRAM newton (input, output);\r\n") at Scanner.cpp:167
+167	    while (getChar(source_buffer) == ' ' && (*(this->line_ptr) != EOF_CHAR))
+(gdb) 
+Scanner::getChar (this=0x7fffffffe0a0, source_buffer=0x7fffffffe520 "PROGRAM newton (input, output);\r\n") at Scanner.cpp:137
+137	    if (*(this->line_ptr) == '\0')
+(gdb) 
+150	    ch = *(this->line_ptr);
+(gdb) 
+151	    if ((ch == '\n') || (ch == '\t') || (ch == '\r'))
+(gdb) 
+155	    if (ch == '{')
+(gdb) 
+159	    return ch;
+(gdb) 
+160	}
+(gdb) 
+Scanner::skipBlanks (this=0x7fffffffe0a0, source_buffer=0x7fffffffe520 "PROGRAM newton (input, output);\r\n") at Scanner.cpp:169
+169	        this->line_ptr++;
+(gdb) 
+167	    while (getChar(source_buffer) == ' ' && (*(this->line_ptr) != EOF_CHAR))
+(gdb) 
+Scanner::getChar (this=0x7fffffffe0a0, source_buffer=0x7fffffffe520 "PROGRAM newton (input, output);\r\n") at Scanner.cpp:137
+137	    if (*(this->line_ptr) == '\0')
+(gdb) 
+150	    ch = *(this->line_ptr);
+(gdb) 
+151	    if ((ch == '\n') || (ch == '\t') || (ch == '\r'))
+(gdb) 
+155	    if (ch == '{')
+(gdb) 
+159	    return ch;
+(gdb) 
+160	}
+(gdb) 
+Scanner::skipBlanks (this=0x7fffffffe0a0, source_buffer=0x7fffffffe520 "PROGRAM newton (input, output);\r\n") at Scanner.cpp:171
+171	}
+(gdb) 
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:104
+104	    ch = *(this->line_ptr);
+(gdb) 
+107	    switch (char_table[ch])
+(gdb) 
+110	            getWord(token_string, token_ptr, new_token);
+(gdb) 
+Scanner::getWord (this=0x7fffffffe0a0, str=0x7fffffffded0 "", token_ptr=0x7fffffffded0 "", tok=0x607400) at Scanner.cpp:191
+191	    unsigned char ch = *(this->line_ptr);
+(gdb) 
+192	    while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
+(gdb) 
+194	        *token_ptr++ = *((this->line_ptr)++);
+(gdb) 
+195	        ch = *(this->line_ptr);
+(gdb) 
+192	    while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
+(gdb) 
+194	        *token_ptr++ = *((this->line_ptr)++);
+(gdb) 
+195	        ch = *(this->line_ptr);
+(gdb) 
+192	    while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
+(gdb) 
+194	        *token_ptr++ = *((this->line_ptr)++);
+(gdb) 
+195	        ch = *(this->line_ptr);
+(gdb) finish
+Run till exit from #0  Scanner::getWord (this=0x7fffffffe0a0, str=0x7fffffffded0 "new", token_ptr=0x7fffffffded3 "", tok=0x607400) at Scanner.cpp:195
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:111
+111	            break;
+(gdb) step
+126	    return new_token; //What should be returned here?
+(gdb) 
+127	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:48
+48	        print.printToken(token);
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607400) at Print.cpp:77
+77	{
+(gdb) 
+79	    const char *symbol_string = SYMBOL_STRINGS[token->getCode()];
+(gdb) 
+Token::getCode (this=0x607400) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607400) at Print.cpp:81
+81	    switch (token->getCode())
+(gdb) 
+Token::getCode (this=0x607400) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607400) at Print.cpp:97
+97		sprintf(line, "    >> %-16s %-s\n", symbol_string, token->getTokenString().c_str());
+(gdb) 
+Token::getTokenString (this=0x607400) at Token.cpp:84
+84	    return this->tokenString;
+(gdb) 
+85	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607400) at Print.cpp:98
+98		break;
+(gdb) 
+100	    printLine(line);
+(gdb) 
+Print::printLine (this=0x7fffffffe050, line=0x7fffffffdeb0 "    >> <IDENTIFIER>     newton\n") at Print.cpp:47
+47	    char save_ch = '\0';
+(gdb) 
+48	    char *save_chp = NULL;
+(gdb) 
+51	    if (++line_count > MAX_LINES_PER_PAGE)
+(gdb) 
+56	    if (strlen(line) > MAX_PRINT_LINE_LENGTH)
+(gdb) 
+60	    if (save_chp)
+(gdb) 
+65	    printf("%s", line);
+(gdb) 
+    >> <IDENTIFIER>     newton
+66	    if (save_chp)
+(gdb) 
+70	}
+(gdb) 
+Print::printToken (this=0x7fffffffe050, token=0x607400) at Print.cpp:101
+101	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:52
+52			if (token->getCode() == IDENTIFIER) {
+(gdb) 
+Token::getCode (this=0x607400) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:53
+53				++identifierCount;
+(gdb) 
+54				tree.addToken(token);
+(gdb) 
+BinaryTree::addToken (this=0x7fffffffe010, newToken=0x607400) at BinaryTree.cpp:32
+32		if (root != NULL){
+(gdb) 
+89			this->root = newToken;
+(gdb) 
+91	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:60
+60		}while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
+(gdb) 
+Token::getCode (this=0x607400) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:45
+45	    do
+(gdb) 
+60		}while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
+(gdb) 
+Token::getCode (this=0x607400) at Token.cpp:43
+43	    return this->code;
+(gdb) 
+44	}
+(gdb) 
+main (argc=2, argv=0x7fffffffe7a8) at main.cpp:45
+45	    do
+(gdb) 
+47	        token = scanner.getToken();
+(gdb) 
+Scanner::getToken (this=0x7fffffffe0a0) at Scanner.cpp:92
+92	{
+(gdb) 
+93	    unsigned char ch = '\0'; //This can be the current character you are examining during scanning.
+(gdb) 
+94	    char token_string[MAX_TOKEN_STRING_LENGTH] = {'\0'}; //Store your token here as you build it.
+(gdb) 
+95	    char *token_ptr = token_string; //write some code to point this to the beginning of token_string
+(gdb) 
+96	    Token *new_token = new Token(line_number);
 (gdb) 
 
 Program received signal SIGSEGV, Segmentation fault.
-0x00007ffff7b79f28 in std::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string(std::string const&) () from /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+0x00007ffff75848aa in ?? () from /lib/x86_64-linux-gnu/libc.so.6
 (gdb) 
-Single stepping until exit from function _ZNSsC2ERKSs,
-which has no line number information.
-
-Program terminated with signal SIGSEGV, Segmentation fault.
-The program no longer exists.
 
 

@@ -36,6 +36,7 @@ private:
     bool seekLeft;		// used in list iterate, defines whether should take findAlpha or the parent as the next alphabetical token
     
 public:
+	BinaryTree();
     BinaryTree(Token* root);
     ~BinaryTree();
     
