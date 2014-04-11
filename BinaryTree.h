@@ -36,6 +36,7 @@ private:
     bool seekLeft;		// used in list iterate, defines whether should take findAlpha or the parent as the next alphabetical token
     
 public:
+	BinaryTree();
     BinaryTree(Token* root);
     ~BinaryTree();
     
@@ -52,7 +53,7 @@ public:
     bool isNotDone(Token* currentToken);		// boolean returns false only when all members of the tree have been used
     void addRightChild(Token* currentToken);
     void addLeftChild(Token* currentToken);
-    
+    void recursiveDelete(Token* node);
 };
 
 

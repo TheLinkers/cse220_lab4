@@ -93,7 +93,7 @@ Token* Scanner::getToken()
     unsigned char ch = '\0'; //This can be the current character you are examining during scanning.
     char token_string[MAX_TOKEN_STRING_LENGTH] = {'\0'}; //Store your token here as you build it.
     char *token_ptr = token_string; //write some code to point this to the beginning of token_string
-    Token *new_token = new Token();
+    Token *new_token = new Token(line_number);
     
 	//1.  Skip past all of the blanks
     if (this->line_ptr == NULL)
@@ -191,7 +191,7 @@ void Scanner::getWord(char *str, char *token_ptr, Token *tok)
     unsigned char ch = *(this->line_ptr);
     while ((char_table[ch] == LETTER) || (char_table[ch] == DIGIT))
 	{
-        *token_ptr++ = (*(this->line_ptr))++;
+        *token_ptr++ = *((this->line_ptr)++);
         ch = *(this->line_ptr);
 	}
     *token_ptr = '\0';
@@ -290,7 +290,7 @@ void Scanner::getString(char *str, char *token_ptr, Token *tok)
         *token_ptr++ = ch;
         ch = *(++(this->line_ptr));
 	}
-    *token_ptr++ = *(this->line_ptr)++;
+    *token_ptr++ = *((this->line_ptr)++);
     *token_ptr = '\0';
     tok->setCode(STRING);
     tok->setType(STRING_LIT);

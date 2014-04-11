@@ -44,6 +44,7 @@ private:
     char source_line[MAX_SOURCE_LINE_LENGTH];
     char *line_ptr;
     int line_number;
+    char* lineString;
     
     bool getSourceLine(char source_buffer[]);
     char getChar(char source_buffer[]);
