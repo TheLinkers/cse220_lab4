@@ -13,7 +13,7 @@
 #include "IntegerList.h"
 
 IntegerList::IntegerList(int value) {
-    *tail = IntegerNode(value, this->tail);
+    tail = new IntegerNode(value, NULL);
     this->head = this->tail;
 	this->numberOfNodes = 1;
 }
@@ -43,7 +43,9 @@ IntegerNode* IntegerList::getTail() {
 
 
 void IntegerList::appendToList(int value) {
-    *tail = IntegerNode(value, this->tail);
+    IntegerNode *newTail = new IntegerNode(value, this->tail);
+    this->tail->setNext(newTail);
+    this->tail = newTail;
 	++numberOfNodes;
 }
 

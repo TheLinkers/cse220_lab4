@@ -40,7 +40,8 @@ int main(int argc, const char * argv[])
     Print print(source_name, date);
     Scanner scanner(source_file, source_name, date, print);
     int identifierCount = 0;
-    BinaryTree tree = BinaryTree();					// not sure how to properly initialize/set the root of the tree
+	//BinaryTree tree = BinaryTree();					// not sure how to properly initialize/set the root of the tree
+    BinaryTree tree;
     
     do
 	{
@@ -49,14 +50,14 @@ int main(int argc, const char * argv[])
 	
 	    // BinaryTree stuff goes here
 	    // If token is IDENTIFIER type, sends token pointer to tree to check if it exists
-	if (token->getCode() == IDENTIFIER) {
-	    ++identifierCount;
-	    tree.addToken(token);
-	}
-	/*if (token->getCode() != PERIOD && token->getCode() != END_OF_FILE && token->getCode() != IDENTIFIER)
-	 {
-	 delete token;
-	 }*/
+		if (token->getCode() == IDENTIFIER) {
+			++identifierCount;
+			tree.addToken(token);
+		}
+		if (token->getCode() != PERIOD && token->getCode() != END_OF_FILE && token->getCode() != IDENTIFIER)
+		{
+			delete token;
+		}
 	}while (token->getCode() != PERIOD && token->getCode() != END_OF_FILE);
     
     delete token;

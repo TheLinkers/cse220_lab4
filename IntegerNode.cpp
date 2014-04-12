@@ -15,6 +15,7 @@
 IntegerNode::IntegerNode(int value, IntegerNode* previous) {
     this->value = value;
     this->previous = previous;
+    this->next = NULL;
 }
 
 IntegerNode::~IntegerNode() {
